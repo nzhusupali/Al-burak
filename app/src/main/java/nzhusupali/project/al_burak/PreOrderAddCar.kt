@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import nzhusupali.project.al_burak.databinding.ActivityPreOrderAddCarBinding
+import nzhusupali.project.al_burak.utils.ClientParam
 
 class PreOrderAddCar : AppCompatActivity() {
     private lateinit var _binding: ActivityPreOrderAddCarBinding

@@ -96,7 +96,7 @@
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="230dp"
         android:autofillHints="@string/FinalSum"
-        android:drawableStart="@drawable/ic_cash"
+        android:drawableStart="@drawable/ic_person"
         android:hint="@string/client_name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"

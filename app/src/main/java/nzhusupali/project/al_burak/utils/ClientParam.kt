@@ -1,4 +1,4 @@
-package nzhusupali.project.al_burak
+package nzhusupali.project.al_burak.utils
 
 import com.google.firebase.Timestamp
 
