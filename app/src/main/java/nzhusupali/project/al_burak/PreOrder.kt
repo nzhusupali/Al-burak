@@ -1,17 +1,17 @@
 package nzhusupali.project.al_burak
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import nzhusupali.project.al_burak.databinding.ActivityCompletedWorkBinding
+import androidx.appcompat.app.AppCompatActivity
+import nzhusupali.project.al_burak.databinding.ActivityPreOrderBinding
 
-class CompletedWork : AppCompatActivity() {
-    private lateinit var _binding : ActivityCompletedWorkBinding
+class PreOrder : AppCompatActivity() {
+    private lateinit var _binding: ActivityPreOrderBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityCompletedWorkBinding.inflate(layoutInflater)
+        _binding = ActivityPreOrderBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-
         _binding.back.setOnClickListener { Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP }
 
     }

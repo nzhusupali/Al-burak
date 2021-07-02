@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".PreOrderAddCar">
+
+    <EditText
+        android:id="@+id/employee"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="566dp"
+        android:autofillHints="@string/employee_name"
+        android:drawableStart="@drawable/ic_engineering"
+        android:hint="@string/employee_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/carName"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="503dp"
+        android:autofillHints="@string/CarBrand"
+        android:drawableStart="@drawable/ic_car"
+        android:hint="@string/CarBrand"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/stateNumber"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="233dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="438dp"
+        android:autofillHints="@string/StateNumberCar"
+        android:drawableStart="@drawable/ic_country"
+        android:hint="@string/StateNumberCar"
+        android:inputType="textCapWords"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/sum"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="302dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="369dp"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_cash"
+        android:hint="@string/FinalSum"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/number"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="371dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="300dp"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_phone"
+        android:hint="@string/phone_number"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.315"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/clientName"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="447dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="230dp"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_cash"
+        android:hint="@string/client_name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/workType"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="514dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="190dp"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_task_build"
+        android:hint="@string/Notes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <Button
+        android:id="@+id/addClient"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="606dp"
+        android:layout_marginBottom="290dp"
+        android:text="@string/addClient"
+        app:backgroundTint="@color/ButtonColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+</androidx.constraintlayout.widget.ConstraintLayout>
