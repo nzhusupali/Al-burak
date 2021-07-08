@@ -3,68 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-   android:background="@color/white"
-    android:layout_height="wrap_content"
-    android:padding="24dp">
-
+    android:layout_height="150dp"
+    android:background="@color/white"
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/carName_ClientList"
         style="@style/sum_ClientList"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="248dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:text="@string/CarBrand"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/sum_ClientList"
         style="@style/sum_ClientList"
-        android:layout_marginStart="280dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
         android:text="100.000"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/carName_ClientList"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/stateNumber_ClientList"
         style="@style/sum_ClientList"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="267dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="96dp"
         android:text="KZ063AMG01"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detail_ClientList"
         style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginStart="243dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="74dp"
+        android:textColor="@color/ButtonTextColor"
+        android:layout_marginEnd="28dp"
         android:width="114dp"
-        android:backgroundTint="@color/ButtonColor"
-        android:text="Подробный список"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="@color/teal_200"
+        android:text="Подробнее"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

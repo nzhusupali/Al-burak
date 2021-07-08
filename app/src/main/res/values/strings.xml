@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Al-burak</string>
 
+    // MainActivity
+    <string name="preOrder">Предзаказы</string>
+    <string name="completedWork">Выполненные работы</string>
+
     //PreOrderAddCar
     <string name="employee_name">Имя работника</string>
     <string name="Notes">Примечания</string>
@@ -11,11 +15,21 @@
     <string name="phone_number">Номер телефона</string>
     <string name="client_name">Имя клиента</string>
     //Kotlin
-        <string name="enter_your_name">Введите своё имя</string>
-        <string name="enter_car_name">Введите марку машины</string>
-        <string name="enter_state_number">Введите государственный номер машины</string>
-        <string name="enterPayment">Введите оплату за работу</string>
-        <string name="enterClientPhoneNumber">Введите номер телефона клиента</string>
-        <string name="enterClientName">Введите имя клиента</string>
-        <string name="enterWorkList">Введите список работы</string>
+    <string name="enter_your_name">Введите своё имя</string>
+    <string name="enter_car_name">Введите марку машины</string>
+    <string name="enter_state_number">Введите государственный номер машины</string>
+    <string name="enterPayment">Введите оплату за работу</string>
+    <string name="enterClientPhoneNumber">Введите номер телефона клиента</string>
+    <string name="enterClientName">Введите имя клиента</string>
+    <string name="enterWorkList">Введите список работы</string>
+
+    // Detail_client_list - activity
+    <string name="employee_name1">Имя работника: </string>
+    <string name="CarBrand1">Марка машины: </string>
+    <string name="StateNumberCar1">Гос номер: </string>
+    <string name="FinalSum1">Сумма работы: </string>
+    <string name="phone_number1">Номер телефона: </string>
+    <string name="client_name1">Имя клиента: </string>
+    <string name="Notes1">Примечания: </string>
+    <string name="addClient1">Добавить клиента: </string>
 </resources>

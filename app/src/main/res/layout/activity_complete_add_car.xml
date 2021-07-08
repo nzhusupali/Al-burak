@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".CompleteAddCar">
+
+    <EditText
+        android:id="@+id/employee"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/employee_name"
+        android:drawableStart="@drawable/ic_engineering"
+        android:hint="@string/employee_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/carName"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/CarBrand"
+        android:drawableStart="@drawable/ic_car"
+        android:hint="@string/CarBrand"
+        app:layout_constraintEnd_toEndOf="@+id/employee"
+        app:layout_constraintStart_toStartOf="@+id/employee"
+        app:layout_constraintTop_toBottomOf="@+id/employee" />
+
+    <EditText
+        android:id="@+id/stateNumber"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/StateNumberCar"
+        android:drawableStart="@drawable/ic_country"
+        android:hint="@string/StateNumberCar"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="@+id/carName"
+        app:layout_constraintStart_toStartOf="@+id/carName"
+        app:layout_constraintTop_toBottomOf="@+id/carName"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/sum"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_cash"
+        android:hint="@string/FinalSum"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/stateNumber"
+        app:layout_constraintStart_toStartOf="@+id/stateNumber"
+        app:layout_constraintTop_toBottomOf="@+id/stateNumber" />
+
+    <EditText
+        android:id="@+id/number"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_phone"
+        android:hint="@string/phone_number"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/sum"
+        app:layout_constraintStart_toStartOf="@+id/sum"
+        app:layout_constraintTop_toBottomOf="@+id/sum" />
+
+    <EditText
+        android:id="@+id/clientName"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_person"
+        android:hint="@string/client_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/number"
+        app:layout_constraintStart_toStartOf="@+id/number"
+        app:layout_constraintTop_toBottomOf="@+id/number" />
+
+    <EditText
+        android:id="@+id/workType"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_task_build"
+        android:hint="@string/Notes"
+        app:layout_constraintEnd_toEndOf="@+id/clientName"
+        app:layout_constraintStart_toStartOf="@+id/clientName"
+        app:layout_constraintTop_toBottomOf="@+id/clientName" />
+
+    <Button
+        android:id="@+id/addClient"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/addClient"
+        android:textColor="@color/ButtonTextColor"
+        app:backgroundTint="@color/ButtonColor"
+        app:layout_constraintEnd_toEndOf="@+id/workType"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/workType"
+        app:layout_constraintTop_toBottomOf="@+id/workType" />
+</androidx.constraintlayout.widget.ConstraintLayout>

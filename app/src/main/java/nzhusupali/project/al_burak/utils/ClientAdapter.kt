@@ -1,22 +1,33 @@
 package nzhusupali.project.al_burak.utils
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.auth.User
 import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.ClientListBinding
+import nzhusupali.project.al_burak.databinding.DetailClientListBinding
 
-class ClientAdapter(private val userList: ArrayList<ClientParam>) :
+class ClientAdapter(private val userList: ArrayList<ClientParam>):
     RecyclerView.Adapter<ClientAdapter.MyViewHolder>() {
+
+
+    private lateinit var clientList: ArrayList<ClientParam>
+    private lateinit var mCtx: Context
+
 
     private var binding: ClientListBinding? = null
     private val _binding get() = binding!!
+    private val bind: DetailClientListBinding? = null
+    private val _bind get() = bind!!
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.client_list,
             parent, false
@@ -26,12 +37,15 @@ class ClientAdapter(private val userList: ArrayList<ClientParam>) :
 
     }
 
-    override fun onBindViewHolder(holder: ClientAdapter.MyViewHolder, position: Int) {
+
+
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user: ClientParam = userList[position]
         holder.carName.text = user.carName
         holder.stateNumber.text = user.stateNumber
         holder.sum.text = user.sum.toString()
-//        holder.detail.text = user.det
+
     }
 
     override fun getItemCount(): Int {

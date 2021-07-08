@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="ButtonColor">#2980DC</color>
+    <color name="ButtonColor">@color/teal_200</color>
+    <color name="ButtonColor1">@color/purple_200</color>
+    <color name="ButtonTextColor">@color/white</color>
     <color name="IconColor">#D2691f</color>
+    <color name="backColor">#F4F4F4</color>
 </resources>

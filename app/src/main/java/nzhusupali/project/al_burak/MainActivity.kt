@@ -1,26 +1,35 @@
 package nzhusupali.project.al_burak
 
-import android.content.Intent
 import android.os.Bundle
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import nzhusupali.project.al_burak.databinding.ActivityMainBinding
-import nzhusupali.project.al_burak.databinding.LayoutAddClientBinding
-
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var _binding: ActivityMainBinding
-    private lateinit var bind: LayoutAddClientBinding
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        bind = LayoutAddClientBinding.inflate(layoutInflater)
-        _binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(_binding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        _binding.addCar.setOnClickListener { startActivity(Intent(this, PreOrderAddCar::class.java)) }
-        _binding.competedWork.setOnClickListener { startActivity(Intent(this,CompletedWork::class.java)) }
-        _binding.preOrder.setOnClickListener { startActivity(Intent(this, PreOrder::class.java)) }
+        val navView: BottomNavigationView = binding.navView
 
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.preOrder, R.id.addCar, R.id.completedWork
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }
-

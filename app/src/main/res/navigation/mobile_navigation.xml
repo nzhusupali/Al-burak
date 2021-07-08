@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/preOrder">
+
+    <fragment
+        android:id="@+id/preOrder"
+        android:name="nzhusupali.project.al_burak.fragments.preOrder.PreOrder"
+        android:label="fragment_pre_order"
+        tools:layout="@layout/fragment_pre_order" />
+
+    <fragment
+        android:id="@+id/addCar"
+        android:name="nzhusupali.project.al_burak.fragments.add.AddCar"
+        android:label="fragment_add_car"
+        tools:layout="@layout/fragment_add_car" />
+    <fragment
+        android:id="@+id/completedWork"
+        android:name="nzhusupali.project.al_burak.fragments.completed.CompletedWork"
+        android:label="fragment_completed_work"
+        tools:layout="@layout/fragment_completed_work" />
+</navigation>
