@@ -1,8 +1,8 @@
-package nzhusupali.project.al_burak.utils
+package nzhusupali.project.al_burak.fragments.completed.adapters
 
 import com.google.firebase.Timestamp
 
-data class ClientParam(
+data class ClientParamComplete(
     val employee: String = " ",
     val carName: String = " ",
     val stateNumber: String = " ",

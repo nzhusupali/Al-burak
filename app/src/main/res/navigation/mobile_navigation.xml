@@ -8,17 +8,17 @@
     <fragment
         android:id="@+id/preOrder"
         android:name="nzhusupali.project.al_burak.fragments.preOrder.PreOrder"
-        android:label="fragment_pre_order"
+        android:label="@string/preOrder"
         tools:layout="@layout/fragment_pre_order" />
 
     <fragment
         android:id="@+id/addCar"
         android:name="nzhusupali.project.al_burak.fragments.add.AddCar"
-        android:label="fragment_add_car"
+        android:label="@string/addCar"
         tools:layout="@layout/fragment_add_car" />
     <fragment
         android:id="@+id/completedWork"
         android:name="nzhusupali.project.al_burak.fragments.completed.CompletedWork"
-        android:label="fragment_completed_work"
+        android:label="@string/completedWork"
         tools:layout="@layout/fragment_completed_work" />
 </navigation>

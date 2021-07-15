@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
-import nzhusupali.project.al_burak.databinding.ActivityCompleteAddCarBinding
 import nzhusupali.project.al_burak.databinding.ActivityPreOrderAddCarBinding
-import nzhusupali.project.al_burak.utils.ClientParam
+import nzhusupali.project.al_burak.fragments.preOrder.adapters.ClientParamPreOrder
 
 class PreOrderAddCar : AppCompatActivity() {
     private lateinit var _binding: ActivityPreOrderAddCarBinding
@@ -38,7 +37,7 @@ class PreOrderAddCar : AppCompatActivity() {
         notes: String
     ) {
         val db = FirebaseFirestore.getInstance()
-        val addClient = ClientParam(carName, clientName, phoneNumber, stateNumber, sum, notes)
+        val addClient = ClientParamPreOrder(carName, clientName, phoneNumber, stateNumber, sum, notes)
 
         if (carName.isEmpty()) {
             _binding.carNameComplete.error = getString(R.string.enter_car_name)
@@ -71,10 +70,10 @@ class PreOrderAddCar : AppCompatActivity() {
             return
         }
 
-        db.collection("Предзаказы")
+        db.collection("preOrder")
             .add(addClient)
             .addOnSuccessListener {
-                Toast.makeText(applicationContext, "Машина успешно добавлена", Toast.LENGTH_SHORT)
+                Toast.makeText(applicationContext, getString(R.string.successAdd), Toast.LENGTH_SHORT)
                     .show()
                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(Intent(this, MainActivity::class.java))
@@ -82,7 +81,7 @@ class PreOrderAddCar : AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(
                     this,
-                    "Повторите попытку заново ",
+                    getString(R.string.repeatAdd),
                     Toast.LENGTH_SHORT
                 ).show()
             }

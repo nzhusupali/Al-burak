@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
+import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.FragmentPreOrderBinding
-import nzhusupali.project.al_burak.utils.ClientAdapter
-import nzhusupali.project.al_burak.utils.ClientParam
+import nzhusupali.project.al_burak.fragments.preOrder.adapters.ClientParamPreOrder
+import nzhusupali.project.al_burak.fragments.preOrder.adapters.ClientPreOrderAdapter
 
 class PreOrder : Fragment() {
-    private lateinit var userArrayList: ArrayList<ClientParam>
+    private lateinit var userArrayList: ArrayList<ClientParamPreOrder>
     private lateinit var recyclerView: RecyclerView
-    private lateinit var clientAdapter: ClientAdapter
+    private lateinit var clientAdapter: ClientPreOrderAdapter
     private lateinit var db: FirebaseFirestore
     private lateinit var preOrderViewModel: PreOrderViewModel
 
@@ -41,7 +42,7 @@ class PreOrder : Fragment() {
 
         userArrayList = arrayListOf()
 
-        clientAdapter = ClientAdapter(userArrayList)
+        clientAdapter = ClientPreOrderAdapter(userArrayList)
 
         recyclerView.adapter = clientAdapter
 
@@ -53,11 +54,11 @@ class PreOrder : Fragment() {
     // Читаем данные с Firestore
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        db.collection("Предзаказы")
+        db.collection("preOrder")
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     if (error != null) {
-                        Toast.makeText(context, "not worked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.error_server), Toast.LENGTH_SHORT).show()
                         Log.e("Firestore error", error.message.toString())
                         return
                     }
@@ -65,7 +66,7 @@ class PreOrder : Fragment() {
 
                         if(dc.type == DocumentChange.Type.ADDED){
 
-                            userArrayList.add(dc.document.toObject(ClientParam::class.java))
+                            userArrayList.add(dc.document.toObject(ClientParamPreOrder::class.java))
                         }
                     }
                     clientAdapter.notifyDataSetChanged()

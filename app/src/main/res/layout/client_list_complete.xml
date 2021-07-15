@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/white"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:id="@+id/carName_ClientList"
+        style="@style/sum_ClientList"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/CarBrand"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sum_ClientList"
+        style="@style/sum_ClientList"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/sum_simple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stateNumber_ClientList"
+        style="@style/sum_ClientList"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/stateNumber_simple"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/detail_ClientList"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="74dp"
+        android:textColor="@color/ButtonTextColor"
+        android:layout_marginEnd="28dp"
+        android:width="114dp"
+        android:backgroundTint="@color/teal_200"
+        android:text="@string/detail_simple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
+import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.FragmentCompletedWorkBinding
-import nzhusupali.project.al_burak.utils.ClientAdapter
-import nzhusupali.project.al_burak.utils.ClientParam
+import nzhusupali.project.al_burak.fragments.completed.adapters.ClientCompleteAdapter
+import nzhusupali.project.al_burak.fragments.completed.adapters.ClientParamComplete
 
 class CompletedWork : Fragment() {
-    private lateinit var userArrayList: ArrayList<ClientParam>
+    private lateinit var userArrayList: ArrayList<ClientParamComplete>
     private lateinit var recyclerView: RecyclerView
-    private lateinit var clientAdapter: ClientAdapter
+    private lateinit var clientCompleteAdapter: ClientCompleteAdapter
     private lateinit var db: FirebaseFirestore
     private lateinit var completedWorkViewModel: CompletedWorkViewModel
 
@@ -42,9 +43,9 @@ class CompletedWork : Fragment() {
 
         userArrayList = arrayListOf()
 
-        clientAdapter = ClientAdapter(userArrayList)
+        clientCompleteAdapter = ClientCompleteAdapter(userArrayList)
 
-        recyclerView.adapter = clientAdapter
+        recyclerView.adapter = clientCompleteAdapter
 
         eventChangeListener()
 
@@ -55,11 +56,11 @@ class CompletedWork : Fragment() {
     // Читаем данные с Firestore
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        db.collection("Выполненные работы")
+        db.collection("completedWork")
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     if (error != null) {
-                        Toast.makeText(context, "not worked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.error_server) , Toast.LENGTH_SHORT).show()
                         Log.e("Firestore error", error.message.toString())
                         return
                     }
@@ -67,10 +68,10 @@ class CompletedWork : Fragment() {
 
                         if (dc.type == DocumentChange.Type.ADDED) {
 
-                            userArrayList.add(dc.document.toObject(ClientParam::class.java))
+                            userArrayList.add(dc.document.toObject(ClientParamComplete::class.java))
                         }
                     }
-                    clientAdapter.notifyDataSetChanged()
+                    clientCompleteAdapter.notifyDataSetChanged()
                 }
 
             })

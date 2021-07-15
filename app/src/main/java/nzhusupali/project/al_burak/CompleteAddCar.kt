@@ -6,8 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import nzhusupali.project.al_burak.databinding.ActivityCompleteAddCarBinding
-import nzhusupali.project.al_burak.databinding.ActivityPreOrderAddCarBinding
-import nzhusupali.project.al_burak.utils.ClientParam
+import nzhusupali.project.al_burak.fragments.completed.adapters.ClientParamComplete
 
 class CompleteAddCar : AppCompatActivity() {
     private lateinit var _binding: ActivityCompleteAddCarBinding
@@ -48,7 +47,7 @@ class CompleteAddCar : AppCompatActivity() {
 
     ) {
         val db = FirebaseFirestore.getInstance()
-        val addClient= ClientParam(employee,carName,stateNumber,sum,phoneNumberClient,clientName,workType)
+        val addClient= ClientParamComplete(employee,carName,stateNumber,sum,phoneNumberClient,clientName,workType)
 
         if (employee.isEmpty()){
             _binding.employee.error = getString(R.string.enter_your_name)
@@ -86,19 +85,15 @@ class CompleteAddCar : AppCompatActivity() {
             return
         }
 
-        db.collection("Выполненные работы")
+        db.collection("completedWork")
             .add(addClient)
             .addOnSuccessListener {
-                Toast.makeText(applicationContext, "Машина успешно добавлена",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, getString(R.string.successAdd),Toast.LENGTH_SHORT).show()
                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(Intent(this,MainActivity::class.java))
             }
             .addOnFailureListener {
-                Toast.makeText(
-                    this,
-                    "Повторите попытку заново $employee",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, getString(R.string.repeatAdd), Toast.LENGTH_SHORT).show()
             }
     }
 }
