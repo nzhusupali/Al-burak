@@ -1,7 +1,5 @@
 package nzhusupali.project.al_burak.fragments.completed.adapters
 
-import com.google.firebase.Timestamp
-
 data class ClientParamComplete(
     val employee: String = " ",
     val carName: String = " ",
@@ -10,5 +8,5 @@ data class ClientParamComplete(
     val phoneNumberClient: String = " ",
     val clientName: String = " ",
     val workType: String = " ",
-    val date: Timestamp? = null,
+    val date: String = " "
 )

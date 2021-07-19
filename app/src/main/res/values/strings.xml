@@ -19,7 +19,6 @@
     <string name="addCar">Добавить машину</string>
 
     //PreOrderAddCar
-    <string name="employee_name">Имя работника</string>
     <string name="Notes">Примечания</string>
     <string name="FinalSum">Сумма итоговой работы</string>
     <string name="StateNumberCar">Государственный номер</string>
@@ -27,6 +26,8 @@
     <string name="addClient">Добавить клиента</string>
     <string name="phone_number">Номер телефона</string>
     <string name="client_name">Имя клиента</string>
+    <string name="choiceDataPreOrder">Выбрать дату</string>
+
     //Kotlin
         <string name="enter_your_name">Введите своё имя</string>
         <string name="enter_car_name">Введите марку машины</string>
@@ -40,8 +41,10 @@
         <string name="informationPreOrder">Информация о предзаказе</string>
 
     // Completed Work
-        //Kotlin
+    <string name="employee_name">Имя работника</string>
+    //Kotlin
         <string name="delete">Удалить машину</string>
+        <string name="informationCompleted">Информация о выполненной машине</string>
 
 
     // Detail_client_list - activity
@@ -58,6 +61,7 @@
     <string name="stateNumber_simple">KZ063AMG01</string>
     <string name="detail_simple">Подробнее</string>
     <string name="sum_simple">100 000</string>
+    <string name="datePicker">Дата брони</string>
 
 
 </resources>

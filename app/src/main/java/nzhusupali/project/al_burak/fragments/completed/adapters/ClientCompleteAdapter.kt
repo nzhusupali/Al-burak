@@ -35,9 +35,10 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
 
         holder.btn.setOnClickListener { v ->
             val context = v.rootView.context
+            val ffe = "Firebase error"
             val db = FirebaseFirestore.getInstance()
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(context.getString(R.string.completedWork))
+            builder.setTitle(context.getString(R.string.informationCompleted))
 
             val view =
                 LayoutInflater.from(context).inflate(R.layout.detail_client_list, null)
@@ -48,6 +49,7 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
             val sum = view.findViewById<TextView>(R.id.sum_cng)
             val phoneNumberClient = view.findViewById<TextView>(R.id.phoneNumber_cng)
             val clientName = view.findViewById<TextView>(R.id.clientName_cng)
+            val date = view.findViewById<TextView>(R.id.datePicker_cng)
             val detail = view.findViewById<TextView>(R.id.detail_cng)
 
             employee.text = user.employee
@@ -56,41 +58,36 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
             sum.text = user.sum
             phoneNumberClient.text = user.phoneNumberClient
             clientName.text = user.clientName
+            date.text = user.date
             detail.text = user.workType
 
             builder.setView(view)
                 .setPositiveButton(context.getString(R.string.delete)) { _, _ ->
                     db.collection("completedWork")
-                        .get()
-                        .addOnSuccessListener { result ->
-                            for (document in result) {
-                                Log.d("Firebase Firestore: ", "${document.id} => ${document.data}")
-                                db.collection("CompleteWork").document(document.id)
+                        .whereEqualTo("employee", user.employee)
+                        .whereEqualTo("carName", user.carName)
+                        .whereEqualTo("clientName", user.clientName)
+                        .whereEqualTo("phoneNumberClient", user.phoneNumberClient)
+                        .whereEqualTo("stateNumber",user.stateNumber)
+                        .whereEqualTo("sum", user.sum)
+                        .get().addOnCompleteListener { p0 ->
+                            if (p0.isSuccessful && !p0.result!!.isEmpty){
+
+                                val documentSnapshot = p0.result!!.documents[0]
+
+                                val documentId = documentSnapshot.id
+
+                                db.collection("completedWork")
+                                    .document(documentId)
                                     .delete()
                                     .addOnSuccessListener {
-                                        Toast.makeText(
-                                            context,
-                                            context.getText(R.string.successDelete),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Toast.makeText(context, context.getString(R.string.successDelete), Toast.LENGTH_SHORT).show()
+                                        notifyDataSetChanged()
+                                    }.addOnFailureListener { e ->
+                                        Toast.makeText(context, context.getString(R.string.error_server), Toast.LENGTH_SHORT).show()
+                                        Log.d(ffe, e.toString())
                                     }
-                                    .addOnFailureListener {
-                                        Toast.makeText(
-                                            context,
-                                            context.getString(R.string.error_server),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                notifyDataSetChanged()
                             }
-                        }
-                        .addOnFailureListener { exception ->
-                            Toast.makeText(
-                                context,
-                                context.getString(R.string.error_server),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.d("Firebase Firestore: ", "Error getting documents: ", exception)
                         }
                 }
             builder.setNeutralButton(context.getString(R.string.close)) { _, _ ->

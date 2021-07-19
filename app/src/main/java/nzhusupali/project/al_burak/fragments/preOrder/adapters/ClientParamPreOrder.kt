@@ -6,5 +6,6 @@ data class ClientParamPreOrder(
     val phoneNumberClient: String = " ",
     val stateNumber: String = " ",
     val sum: String = " ",
-    val workType: String = " "
+    val workType: String = " ",
+    val date: String = " "
 )

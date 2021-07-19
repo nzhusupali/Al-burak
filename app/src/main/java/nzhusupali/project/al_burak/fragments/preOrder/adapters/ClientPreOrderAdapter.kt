@@ -2,7 +2,6 @@ package nzhusupali.project.al_burak.fragments.preOrder.adapters
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,14 +19,14 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.client_list_pre_order, parent, false
         )
-        itemView.setOnClickListener(View.OnClickListener { v ->
-        })
         return MyViewHolder(itemView)
     }
 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user: ClientParamPreOrder = userList[position]
+        val ffe = "Firestore error: "
+
         holder.carName.text = user.carName
         holder.stateNumber.text = user.stateNumber
         holder.sum.text = user.sum
@@ -46,6 +45,7 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
             val sum = view.findViewById<TextView>(R.id.sum_cng2)
             val phoneNumberClient = view.findViewById<TextView>(R.id.phoneNumber_cng2)
             val clientName = view.findViewById<TextView>(R.id.clientName_cng2)
+            val date = view.findViewById<TextView>(R.id.datePicker_cng2)
             val detail = view.findViewById<TextView>(R.id.detail_cng2)
 
             carName.text = user.carName
@@ -53,6 +53,7 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
             sum.text = user.sum
             phoneNumberClient.text = user.phoneNumberClient
             clientName.text = user.clientName
+            date.text = user.date
             detail.text = user.workType
 
             builder.setTitle(context.getString(R.string.informationPreOrder))
@@ -61,24 +62,40 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
                 context.getString(R.string.deletePreOrder)
             ) { _, _ ->
                 db.collection("preOrder")
-                    .get()
-                    .addOnSuccessListener { result ->
-                        for (document in result) {
-                            Log.d("Firebase Firestore", "${document.id} => ${document.data}")
-                            db.collection("preOrder").document(document.id)
+                    .whereEqualTo("carName", user.carName)
+                    .whereEqualTo("clientName", user.clientName)
+                    .whereEqualTo("phoneNumberClient", user.phoneNumberClient)
+                    .whereEqualTo("stateNumber", user.stateNumber)
+                    .whereEqualTo("date", user.date)
+                    .whereEqualTo("sum", user.sum)
+                    .get().addOnCompleteListener { p0 ->
+                        if (p0.isSuccessful && !p0.result!!.isEmpty) {
+
+                            val documentSnapshot = p0.result!!.documents[0]
+
+                            val documentId = documentSnapshot.id
+
+                            db.collection("preOrder")
+                                .document(documentId)
                                 .delete()
                                 .addOnSuccessListener {
-                                    Toast.makeText(context, context.getString(R.string.successDelete), Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        context,
+                                        context.getString(R.string.successDelete),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    notifyDataSetChanged()
+                                }.addOnFailureListener { e ->
+                                    Toast.makeText(
+                                        context,
+                                        context.getString(R.string.error_server),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    Log.d(ffe, e.toString())
                                 }
-                                .addOnFailureListener {
-                                    Toast.makeText(context, context.getString(R.string.error_server), Toast.LENGTH_SHORT).show()
-                                }
-                            notifyDataSetChanged()
+
+
                         }
-                    }
-                    .addOnFailureListener { exception ->
-                        Toast.makeText(context, context.getString(R.string.error_server), Toast.LENGTH_SHORT).show()
-                        Log.d("Firebase Firestore", "Error getting documents: ", exception)
                     }
             }
             builder.setNeutralButton(context.getString(R.string.close)) { _, _ ->

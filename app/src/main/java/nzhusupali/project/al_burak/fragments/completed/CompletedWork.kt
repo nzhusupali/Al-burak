@@ -67,7 +67,7 @@ class CompletedWork : Fragment() {
                     for (dc: DocumentChange in value?.documentChanges!!) {
 
                         if (dc.type == DocumentChange.Type.ADDED) {
-
+                            Log.d("Firebase Firestore", dc.document.id)
                             userArrayList.add(dc.document.toObject(ClientParamComplete::class.java))
                         }
                     }

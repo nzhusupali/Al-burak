@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
@@ -30,8 +29,6 @@ class PreOrder : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        preOrderViewModel =
-            ViewModelProvider(this).get(PreOrderViewModel::class.java)
 
         _binding = FragmentPreOrderBinding.inflate(inflater, container,false)
         val root: View = binding.root
@@ -39,7 +36,6 @@ class PreOrder : Fragment() {
         recyclerView = _binding!!.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
-
         userArrayList = arrayListOf()
 
         clientAdapter = ClientPreOrderAdapter(userArrayList)
@@ -64,8 +60,8 @@ class PreOrder : Fragment() {
                     }
                     for(dc : DocumentChange in value?.documentChanges!!){
 
-                        if(dc.type == DocumentChange.Type.ADDED){
-
+                        if (dc.type == DocumentChange.Type.ADDED) {
+                            Log.d("Firebase Firestore", dc.document.id)
                             userArrayList.add(dc.document.toObject(ClientParamPreOrder::class.java))
                         }
                     }
