@@ -2,6 +2,7 @@ package nzhusupali.project.al_burak.fragments.completed.adapters
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,7 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
             val date = view.findViewById<TextView>(R.id.datePicker_cng)
             val detail = view.findViewById<TextView>(R.id.detail_cng)
 
+
             employee.text = user.employee
             carName.text = user.carName
             stateNumber.text = user.stateNumber
@@ -60,6 +62,13 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
             clientName.text = user.clientName
             date.text = user.date
             detail.text = user.workType
+
+            phoneNumberClient.setOnClickListener {
+                val phoneNumber = "tel: " + user.phoneNumberClient
+                val startIntent = Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber))
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(startIntent)
+            }
 
             builder.setView(view)
                 .setPositiveButton(context.getString(R.string.delete)) { _, _ ->

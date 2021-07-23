@@ -2,6 +2,7 @@ package nzhusupali.project.al_burak.fragments.preOrder.adapters
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import nzhusupali.project.al_burak.R
 
+
 class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>) :
     RecyclerView.Adapter<ClientPreOrderAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -21,7 +23,6 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
         )
         return MyViewHolder(itemView)
     }
-
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user: ClientParamPreOrder = userList[position]
@@ -56,6 +57,12 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
             date.text = user.date
             detail.text = user.workType
 
+            phoneNumberClient.setOnClickListener {
+                    val phoneNumber = "tel: " + user.phoneNumberClient
+                    val startIntent = Intent(Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber)))
+                    startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(startIntent)
+            }
             builder.setTitle(context.getString(R.string.informationPreOrder))
             builder.setView(view)
             builder.setPositiveButton(

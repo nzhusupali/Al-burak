@@ -1,102 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".PreOrderAddCar">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        tools:context=".PreOrderAddCar">
+        <AutoCompleteTextView
+            android:id="@+id/carName_preOrder"
+            style="@style/ET_Complete_AddCar"
+            android:layout_marginTop="62dp"
+            android:autofillHints="@string/CarBrand"
+            android:drawableStart="@drawable/ic_car"
+            android:hint="@string/CarBrand"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/carName_complete"
-        style="@style/ET_Complete_AddCar"
-        android:layout_marginTop="62dp"
-        android:autofillHints="@string/CarBrand"
-        android:drawableStart="@drawable/ic_car"
-        android:hint="@string/CarBrand"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/clientName_preOrder"
+            style="@style/ET_PreOrder_AddCar"
+            android:autofillHints="@string/FinalSum"
+            android:drawableStart="@drawable/ic_person"
+            android:hint="@string/client_name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/carName_preOrder"
+            app:layout_constraintStart_toStartOf="@+id/carName_preOrder"
+            app:layout_constraintTop_toBottomOf="@+id/carName_preOrder" />
 
-    <EditText
-        android:id="@+id/clientName_complete"
-        style="@style/ET_PreOrder_AddCar"
-        android:autofillHints="@string/FinalSum"
-        android:drawableStart="@drawable/ic_person"
-        android:hint="@string/client_name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/carName_complete"
-        app:layout_constraintStart_toStartOf="@+id/carName_complete"
-        app:layout_constraintTop_toBottomOf="@+id/carName_complete" />
+        <EditText
+            android:id="@+id/number_preOrder"
+            style="@style/ET_PreOrder_AddCar"
+            android:autofillHints="@string/Notes"
+            android:drawableStart="@drawable/ic_phone"
+            android:hint="@string/phone_number"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/clientName_preOrder"
+            app:layout_constraintStart_toStartOf="@+id/clientName_preOrder"
+            app:layout_constraintTop_toBottomOf="@+id/clientName_preOrder" />
 
-    <EditText
-        android:id="@+id/number_complete"
-        style="@style/ET_PreOrder_AddCar"
-        android:autofillHints="@string/Notes"
-        android:drawableStart="@drawable/ic_phone"
-        android:hint="@string/phone_number"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/clientName_complete"
-        app:layout_constraintStart_toStartOf="@+id/clientName_complete"
-        app:layout_constraintTop_toBottomOf="@+id/clientName_complete" />
+        <EditText
+            android:id="@+id/stateNumber_preOrder"
+            style="@style/ET_Complete_AddCar"
+            android:autofillHints="@string/StateNumberCar"
+            android:drawableStart="@drawable/ic_country"
+            android:hint="@string/StateNumberCar"
+            app:layout_constraintEnd_toEndOf="@+id/number_preOrder"
+            app:layout_constraintStart_toStartOf="@+id/number_preOrder"
+            app:layout_constraintTop_toBottomOf="@+id/number_preOrder"
+            tools:ignore="TextFields" />
 
-    <EditText
-        android:id="@+id/stateNumber_complete"
-        style="@style/ET_Complete_AddCar"
-        android:autofillHints="@string/StateNumberCar"
-        android:drawableStart="@drawable/ic_country"
-        android:hint="@string/StateNumberCar"
-        app:layout_constraintEnd_toEndOf="@+id/number_complete"
-        app:layout_constraintStart_toStartOf="@+id/number_complete"
-        app:layout_constraintTop_toBottomOf="@+id/number_complete"
-        tools:ignore="TextFields" />
+        <EditText
+            android:id="@+id/sum_preOrder"
+            style="@style/ET_Complete_AddCar"
+            android:autofillHints="@string/FinalSum"
+            android:drawableStart="@drawable/ic_cash"
+            android:ems="10"
+            android:hint="@string/FinalSum"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/stateNumber_preOrder"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/stateNumber_preOrder"
+            app:layout_constraintTop_toBottomOf="@+id/stateNumber_preOrder"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/sum_complete"
-        style="@style/ET_Complete_AddCar"
-        android:autofillHints="@string/FinalSum"
-        android:drawableStart="@drawable/ic_cash"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/FinalSum"
-        app:layout_constraintEnd_toEndOf="@+id/stateNumber_complete"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/stateNumber_complete"
-        app:layout_constraintTop_toBottomOf="@+id/stateNumber_complete"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/dateBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/choiceDataPreOrder"
-        android:layout_marginTop="24dp"
-        android:drawablePadding="20dp"
-        android:paddingStart="10dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/sum_complete"
-        app:layout_constraintStart_toStartOf="@+id/sum_complete"
-        app:layout_constraintTop_toBottomOf="@+id/sum_complete"
-        app:drawableStartCompat="@drawable/ic_date" />
+        <TextView
+            android:id="@+id/dateBtn_preOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="20dp"
+            android:hint="@string/choiceDataPreOrder"
+            android:paddingStart="10dp"
+            app:drawableStartCompat="@drawable/ic_date"
+            app:layout_constraintEnd_toEndOf="@+id/sum_preOrder"
+            app:layout_constraintStart_toStartOf="@+id/sum_preOrder"
+            app:layout_constraintTop_toBottomOf="@+id/sum_preOrder" />
 
 
-    <EditText
-        android:id="@+id/notes_complete"
-        style="@style/ET_Complete_AddCar"
-        android:autofillHints="@string/Notes"
-        android:drawableStart="@drawable/ic_task_build"
-        android:hint="@string/Notes"
-        app:layout_constraintEnd_toEndOf="@+id/dateBtn"
-        app:layout_constraintStart_toStartOf="@+id/dateBtn"
-        app:layout_constraintTop_toBottomOf="@+id/dateBtn" />
+        <EditText
+            android:id="@+id/notes_preOrder"
+            style="@style/ET_Complete_AddCar"
+            android:autofillHints="@string/Notes"
+            android:drawableStart="@drawable/ic_task_build"
+            android:hint="@string/Notes"
+            app:layout_constraintEnd_toEndOf="@+id/dateBtn_preOrder"
+            app:layout_constraintStart_toStartOf="@+id/dateBtn_preOrder"
+            app:layout_constraintTop_toBottomOf="@+id/dateBtn_preOrder" />
 
     <Button
-        android:id="@+id/addClient"
+        android:id="@+id/addClient_preOrder"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -106,7 +101,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notes_complete" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/notes_preOrder" />
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

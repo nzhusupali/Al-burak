@@ -20,7 +20,6 @@ class PreOrder : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var clientAdapter: ClientPreOrderAdapter
     private lateinit var db: FirebaseFirestore
-    private lateinit var preOrderViewModel: PreOrderViewModel
 
     private var _binding: FragmentPreOrderBinding? = null
     private val binding get() = _binding!!

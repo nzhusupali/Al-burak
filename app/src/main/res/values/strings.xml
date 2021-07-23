@@ -63,5 +63,57 @@
     <string name="sum_simple">100 000</string>
     <string name="datePicker">Дата брони</string>
 
+    <string-array name="carBrands">
+        <item>Mercedes-Benz</item>
+        <item>BMW</item>
+        <item>Toyota</item>
+        <item>Nissan</item>
+        <item>Kia</item>
+        <item>Subaru</item>
+        <item>Lada</item>
+        <item>Daewoo</item>
+        <item>Hyundai</item>
+        <item>Audi</item>
+        <item>DAC</item>
+        <item>DAF</item>
+        <item>Газель</item>
+        <item>Камаз</item>
+        <item>Газ</item>
+        <item>Hummer</item>
+        <item>JAC</item>
+        <item>Jeep</item>
+        <item>Land Rover</item>
+        <item>Mazda</item>
+        <item>Renault</item>
+        <item>Ford</item>
+        <item>Chevrolet</item>
+        <item>Volkswagen</item>
+        <item>Ravon</item>
+        <item>Honda</item>
+        <item>Volvo</item>
+        <item>Chery</item>
+        <item>Infinity</item>
+        <item>Skoda</item>
+        <item>Peugeot</item>
+        <item>Chrysler</item>
+        <item>Mitsubishi</item>
+        <item>Lexus</item>
+        <item>Acura</item>
+        <item>Datsun</item>
+        <item>Suzuki</item>
+        <item>Citroen</item>
+        <item>Fiat</item>
+        <item>Seat</item>
+        <item>Opel</item>
+        <item>УАЗ</item>
+        <item>Isuzu</item>
+        <item>Geely</item>
+        <item>Changan</item>
+        <item>Lifan</item>
+        <item>Bentley</item>
+        <item>Cadillac</item>
+        <item>Citroen</item>
+        <item>Citroen</item>
+    </string-array>
 
 </resources>

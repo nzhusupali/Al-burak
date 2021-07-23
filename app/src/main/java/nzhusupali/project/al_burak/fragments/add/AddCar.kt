@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import nzhusupali.project.al_burak.PreOrderAddCar
-import nzhusupali.project.al_burak.activity.completedWork.CompleteAddCar
+import nzhusupali.project.al_burak.CompleteAddCar
 import nzhusupali.project.al_burak.databinding.FragmentAddCarBinding
 
 class AddCar : Fragment() {

@@ -36,22 +36,21 @@
     </style>
 
     <style name="TitleText_detailClient">
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginTop">18dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/IconColor</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:drawablePadding">10dp</item>
     </style>
 
     <style name="changeText_detailClient">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">22dp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:layout_marginStart">130dp</item>
     </style>
 

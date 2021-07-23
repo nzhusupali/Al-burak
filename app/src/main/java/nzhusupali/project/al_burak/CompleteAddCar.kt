@@ -1,22 +1,19 @@
-package nzhusupali.project.al_burak.activity.completedWork
+package nzhusupali.project.al_burak
 
 import android.app.DatePickerDialog
-import android.app.Dialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.DatePicker
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import com.google.firebase.firestore.FirebaseFirestore
-import nzhusupali.project.al_burak.MainActivity
-import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.ActivityCompleteAddCarBinding
 import nzhusupali.project.al_burak.fragments.completed.adapters.ClientParamComplete
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CompleteAddCar : AppCompatActivity(), DateSelected {
+class CompleteAddCar : AppCompatActivity() {
 
     private lateinit var _binding: ActivityCompleteAddCarBinding
 
@@ -24,16 +21,16 @@ class CompleteAddCar : AppCompatActivity(), DateSelected {
         super.onCreate(savedInstanceState)
         _binding = ActivityCompleteAddCarBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-
-        _binding.addClient.setOnClickListener {
-            val employee = _binding.employee.text.toString()
-            val carName = _binding.carName.text.toString()
-            val stateNumber = _binding.stateNumber.text.toString()
-            val sum = _binding.sum.text.toString()
-            val phoneNumberClient = _binding.number.text.toString()
-            val clientName = _binding.clientName.text.toString()
-            val date = _binding.dateBtn.text.toString()
-            val workType = _binding.workType.text.toString()
+        autoCompleteCarBrand()
+        _binding.addClientComplete.setOnClickListener {
+            val employee = _binding.employeeComplete.text.toString()
+            val carName = _binding.carNameComplete.text.toString()
+            val stateNumber = _binding.stateNumberComplete.text.toString()
+            val sum = _binding.sumComplete.text.toString()
+            val phoneNumberClient = _binding.numberComplete.text.toString()
+            val clientName = _binding.clientNameComplete.text.toString()
+            val date = _binding.dateBtnComplete.text.toString()
+            val workType = _binding.workTypeComplete.text.toString()
 
             addClientCar(
                 employee,
@@ -46,12 +43,56 @@ class CompleteAddCar : AppCompatActivity(), DateSelected {
                 workType
             )
         }
-        _binding.dateBtn.setOnClickListener { showDatePicker() }
+        _binding.dateBtnComplete.setOnClickListener {
+            showDateTimePicker()
+        }
     }
 
-    private fun showDatePicker() {
-        val datePickerFragment = DatePickerFragmentCompleted(this)
-        datePickerFragment.show(supportFragmentManager, "datePicker")
+    private fun autoCompleteCarBrand() {
+        val carBrand = resources.getStringArray(R.array.carBrands)
+        val arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,carBrand)
+        _binding.carNameComplete.setAdapter(arrayAdapter)
+    }
+
+    private fun showDateTimePicker() {
+        val calendar = Calendar.getInstance()
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                calendar[Calendar.YEAR] = year
+                calendar[Calendar.MONTH] = month
+                calendar[Calendar.DAY_OF_MONTH] = dayOfMonth
+                val timeSetListener =
+                    TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                        calendar[Calendar.HOUR_OF_DAY] = hourOfDay
+                        calendar[Calendar.MINUTE] = minute
+
+                        val simpleDateFormat =
+                            SimpleDateFormat("dd MMMM yyyy hh:mm", Locale.forLanguageTag("RU"))
+                        _binding.dateBtnComplete.text = simpleDateFormat.format(calendar.time)
+
+                        /**
+                         * If we use Button, we need write ->
+                         */
+                        /**
+                        val viewFormat = simpleDateFormat.format(calendar.time)
+                        _binding.dateBtn.text = viewFormat
+                         */
+                    }
+                TimePickerDialog(
+                    this,
+                    timeSetListener,
+                    calendar[Calendar.HOUR_OF_DAY],
+                    calendar[Calendar.MINUTE],
+                    true
+                ).show()
+            }
+        DatePickerDialog(
+            this,
+            dateSetListener,
+            calendar[Calendar.YEAR],
+            calendar[Calendar.MONTH],
+            calendar[Calendar.DAY_OF_MONTH]
+        ).show()
     }
 
     private fun addClientCar(
@@ -66,48 +107,61 @@ class CompleteAddCar : AppCompatActivity(), DateSelected {
 
     ) {
         val db = FirebaseFirestore.getInstance()
-        val addClient= ClientParamComplete(employee,carName,stateNumber,sum,phoneNumberClient,clientName,date,workType)
+        val addClient = ClientParamComplete(
+            employee,
+            carName,
+            stateNumber,
+            sum,
+            phoneNumberClient,
+            clientName,
+            date,
+            workType
+        )
 
-        if (employee.isEmpty()){
-            _binding.employee.error = getString(R.string.enter_your_name)
-            _binding.employee.requestFocus()
+        if (employee.isEmpty()) {
+            _binding.employeeComplete.error = getString(R.string.enter_your_name)
+            _binding.employeeComplete.requestFocus()
             return
         }
-        if(carName.isEmpty()){
-            _binding.carName.error = getString(R.string.enter_car_name)
-            _binding.carName.requestFocus()
+        if (carName.isEmpty()) {
+            _binding.carNameComplete.error = getString(R.string.enter_car_name)
+            _binding.carNameComplete.requestFocus()
             return
         }
-        if (stateNumber.isEmpty()){
-            _binding.stateNumber.error = getString(R.string.enter_state_number)
-            _binding.stateNumber.requestFocus()
+        if (stateNumber.isEmpty()) {
+            _binding.stateNumberComplete.error = getString(R.string.enter_state_number)
+            _binding.stateNumberComplete.requestFocus()
             return
         }
-        if(sum.isEmpty()){
-            _binding.sum.error = getString(R.string.enterPayment)
-            _binding.sum.requestFocus()
+        if (sum.isEmpty()) {
+            _binding.sumComplete.error = getString(R.string.enterPayment)
+            _binding.sumComplete.requestFocus()
             return
         }
-        if(phoneNumberClient.isEmpty()) {
-            _binding.number.error = getString(R.string.enterClientPhoneNumber)
-            _binding.number.requestFocus()
+        if (phoneNumberClient.isEmpty()) {
+            _binding.numberComplete.error = getString(R.string.enterClientPhoneNumber)
+            _binding.numberComplete.requestFocus()
             return
         }
-        if (clientName.isEmpty()){
-            _binding.clientName.error = getString(R.string.enterClientName)
-            _binding.clientName.requestFocus()
+        if (clientName.isEmpty()) {
+            _binding.clientNameComplete.error = getString(R.string.enterClientName)
+            _binding.clientNameComplete.requestFocus()
             return
         }
-        if(workType.isEmpty()){
-            _binding.workType.error = getString(R.string.enterWorkList)
-            _binding.workType.requestFocus()
+        if (workType.isEmpty()) {
+            _binding.workTypeComplete.error = getString(R.string.enterWorkList)
+            _binding.workTypeComplete.requestFocus()
             return
         }
 
         db.collection("completedWork")
             .add(addClient)
             .addOnSuccessListener {
-                Toast.makeText(applicationContext, getString(R.string.successAdd),Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    getString(R.string.successAdd),
+                    Toast.LENGTH_SHORT
+                ).show()
                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(Intent(this, MainActivity::class.java))
             }
@@ -115,33 +169,4 @@ class CompleteAddCar : AppCompatActivity(), DateSelected {
                 Toast.makeText(this, getString(R.string.repeatAdd), Toast.LENGTH_SHORT).show()
             }
     }
-
-    class DatePickerFragmentCompleted(private val dateSelected: DateSelected ) : DialogFragment(),
-        DatePickerDialog.OnDateSetListener{
-        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
-
-            return DatePickerDialog(requireContext(),this,year,month, dayOfMonth)
-        }
-        override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-            dateSelected.receiveDate(year, month, dayOfMonth)
-        }
-    }
-
-    override fun receiveDate(year: Int,month: Int, dayOfMonth: Int) {
-        val calendar = GregorianCalendar()
-        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-        calendar.set(Calendar.MONTH, month)
-        calendar.set(Calendar.YEAR, year)
-
-        val viewFormatter = SimpleDateFormat("dd MMMM yyyy", Locale.forLanguageTag("RU"))
-        val viewFormattedDate = viewFormatter.format(calendar.time)
-        _binding.dateBtn.text = viewFormattedDate
-    }
-}
-interface DateSelected{
-    fun receiveDate(year: Int,month: Int,dayOfMonth: Int)
 }
