@@ -6,17 +6,20 @@
     <string name="No">Нет</string>
     <string name="error_server">Невозможно связаться с сервером</string>
     <string name="close">Закрыть</string>
+    <string name="findStateNumber">Поиск по гос.номеру</string>
+    <string name="page_updated">Страница обновлена</string>
 
     // Add
     <string name="successAdd">Машина успешно добавлена</string>
     <string name="successDelete">Машина успешно удалена</string>
     <string name="repeatAdd">Попробуйте добавить машину заново или проверьте подключение с интернетом</string>
 
-
     // MainActivity
     <string name="preOrder">Предзаказы</string>
     <string name="completedWork">Выполненные работы</string>
     <string name="addCar">Добавить машину</string>
+    <string name="addToPreOrder">Добавить клиента в предзаказы</string>
+    <string name="addToCompletedWork">Добавить машину в выполненные работы</string>
 
     //PreOrderAddCar
     <string name="Notes">Примечания</string>
@@ -62,6 +65,7 @@
     <string name="detail_simple">Подробнее</string>
     <string name="sum_simple">100 000</string>
     <string name="datePicker">Дата брони</string>
+    <string name="msg_token_fmt">FCM registration Token: %s</string>
 
     <string-array name="carBrands">
         <item>Mercedes-Benz</item>
@@ -115,5 +119,4 @@
         <item>Citroen</item>
         <item>Citroen</item>
     </string-array>
-
 </resources>

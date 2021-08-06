@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -49,6 +50,22 @@ class CompletedWork : Fragment() {
 
         eventChangeListener()
 
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                clientCompleteAdapter.filter.filter(newText)
+                return false
+            }
+
+        })
+        binding.swipeToRefresh.setOnRefreshListener {
+            Toast.makeText(context, getString(R.string.page_updated), Toast.LENGTH_SHORT).show()
+            binding.swipeToRefresh.isRefreshing = false
+        }
+
         return root
 
     }
@@ -67,7 +84,7 @@ class CompletedWork : Fragment() {
                     for (dc: DocumentChange in value?.documentChanges!!) {
 
                         if (dc.type == DocumentChange.Type.ADDED) {
-                            Log.d("Firebase Firestore", dc.document.id)
+                            Log.d("Firestore completeWork", dc.document.id)
                             userArrayList.add(dc.document.toObject(ClientParamComplete::class.java))
                         }
                     }

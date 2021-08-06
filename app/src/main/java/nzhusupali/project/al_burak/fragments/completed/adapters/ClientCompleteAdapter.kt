@@ -7,20 +7,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import nzhusupali.project.al_burak.R
+import java.util.*
+import kotlin.collections.ArrayList
 
-class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>) :
-    RecyclerView.Adapter<ClientCompleteAdapter.MyViewHolder>() {
+open class ClientCompleteAdapter(private var userList: ArrayList<ClientParamComplete>) :
+    RecyclerView.Adapter<ClientCompleteAdapter.MyViewHolder>(), Filterable {
     private lateinit var database: FirebaseFirestore
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.client_list_complete,
+            R.layout.item_client_list_complete,
             parent, false
         )
         return MyViewHolder(itemView)
@@ -42,7 +43,8 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
             builder.setTitle(context.getString(R.string.informationCompleted))
 
             val view =
-                LayoutInflater.from(context).inflate(R.layout.detail_client_list, null)
+                LayoutInflater.from(context)
+                    .inflate(R.layout.alert_detail_client_list_complete, null)
 
             val employee = view.findViewById<TextView>(R.id.employee_cng)
             val carName = view.findViewById<TextView>(R.id.carName_cng)
@@ -77,10 +79,10 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
                         .whereEqualTo("carName", user.carName)
                         .whereEqualTo("clientName", user.clientName)
                         .whereEqualTo("phoneNumberClient", user.phoneNumberClient)
-                        .whereEqualTo("stateNumber",user.stateNumber)
+                        .whereEqualTo("stateNumber", user.stateNumber)
                         .whereEqualTo("sum", user.sum)
                         .get().addOnCompleteListener { p0 ->
-                            if (p0.isSuccessful && !p0.result!!.isEmpty){
+                            if (p0.isSuccessful && !p0.result!!.isEmpty) {
 
                                 val documentSnapshot = p0.result!!.documents[0]
 
@@ -90,10 +92,18 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
                                     .document(documentId)
                                     .delete()
                                     .addOnSuccessListener {
-                                        Toast.makeText(context, context.getString(R.string.successDelete), Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            context,
+                                            context.getString(R.string.successDelete),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                         notifyDataSetChanged()
                                     }.addOnFailureListener { e ->
-                                        Toast.makeText(context, context.getString(R.string.error_server), Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            context,
+                                            context.getString(R.string.error_server),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                         Log.d(ffe, e.toString())
                                     }
                             }
@@ -107,6 +117,7 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
 
         }
     }
+
     override fun getItemCount(): Int {
         return userList.size
     }
@@ -116,5 +127,57 @@ class ClientCompleteAdapter(private val userList: ArrayList<ClientParamComplete>
         val stateNumber: TextView = itemView.findViewById(R.id.stateNumber_ClientList)
         val sum: TextView = itemView.findViewById(R.id.sum_ClientList)
         val btn: Button = itemView.findViewById(R.id.detail_ClientList)
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val result = FilterResults()
+
+                val filteredData: ArrayList<ClientParamComplete> = ArrayList()
+                if (constraint.toString().isEmpty()) filteredData.addAll(userList)
+                else {
+
+                    for (obj in userList) {
+
+                        if (obj.stateNumber.lowercase(Locale.getDefault())
+                                .contains(constraint.toString().lowercase(Locale.getDefault()))
+                        ) {
+
+                            filteredData.add(obj)
+
+                        }
+
+                    }
+
+                    result.values = filteredData
+                    result.count = filteredData.size
+                }
+                return result
+            }
+
+            override fun publishResults(constraint: CharSequence, results: FilterResults) {
+                try {
+                    userList = results.values as ArrayList<ClientParamComplete>
+                    notifyDataSetChanged()
+                } catch (e: NullPointerException) {
+                    userList.clear()
+                    eventChangeListener()
+                }
+            }
+        }
+    }
+
+    private fun eventChangeListener() {
+        database.collection("completedWork")
+            .addSnapshotListener { value, _ ->
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        Log.d("Firestore completedWork", dc.document.id)
+                        userList.add(dc.document.toObject(ClientParamComplete::class.java))
+                    }
+                }
+                notifyDataSetChanged()
+            }
     }
 }

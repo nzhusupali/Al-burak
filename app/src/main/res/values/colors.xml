@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="grey">#999999</color>
-    <color name="ButtonColor">@color/teal_200</color>
+    <color name="ButtonColor">@color/purple_200</color>
     <color name="ButtonColor1">@color/purple_200</color>
     <color name="ButtonTextColor">@color/white</color>
     <color name="IconColor">#D2691f</color>

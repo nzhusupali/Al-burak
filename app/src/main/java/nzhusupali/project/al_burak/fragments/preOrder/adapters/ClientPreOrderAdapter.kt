@@ -7,31 +7,31 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import nzhusupali.project.al_burak.R
+import java.util.*
+import kotlin.collections.ArrayList
 
+class ClientPreOrderAdapter(private var userList: ArrayList<ClientParamPreOrder>) :
+    RecyclerView.Adapter<ClientPreOrderAdapter.MyViewHolder>(), Filterable {
 
-class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>) :
-    RecyclerView.Adapter<ClientPreOrderAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.client_list_pre_order, parent, false
+            R.layout.item_client_list_pre_order, parent, false
         )
         return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user: ClientParamPreOrder = userList[position]
-        val ffe = "Firestore error: "
+        val ffe = "Firestore error"
 
         holder.carName.text = user.carName
         holder.stateNumber.text = user.stateNumber
         holder.sum.text = user.sum
-
         holder.detail.setOnClickListener { v ->
             val context = v.rootView.context
             val db = FirebaseFirestore.getInstance()
@@ -39,7 +39,7 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
 
             val view =
                 LayoutInflater.from(context)
-                    .inflate(R.layout.detail_client_list_pre_order, null)
+                    .inflate(R.layout.alert_detail_client_list_pre_order, null)
 
             val carName = view.findViewById<TextView>(R.id.carName_cng2)
             val stateNumber = view.findViewById<TextView>(R.id.stateNumber_cng2)
@@ -58,10 +58,10 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
             detail.text = user.workType
 
             phoneNumberClient.setOnClickListener {
-                    val phoneNumber = "tel: " + user.phoneNumberClient
-                    val startIntent = Intent(Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber)))
-                    startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(startIntent)
+                val phoneNumber = "tel: " + user.phoneNumberClient
+                val startIntent = Intent(Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber)))
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(startIntent)
             }
             builder.setTitle(context.getString(R.string.informationPreOrder))
             builder.setView(view)
@@ -122,5 +122,60 @@ class ClientPreOrderAdapter(private val userList: ArrayList<ClientParamPreOrder>
         val stateNumber: TextView = itemView.findViewById(R.id.stateNumber_ClientListP)
         val sum: TextView = itemView.findViewById(R.id.sum_ClientListP)
         val detail: Button = itemView.findViewById(R.id.detail_ClientListP)
+    }
+
+    // Search view
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence): FilterResults {
+                val results = FilterResults()
+
+                val filteredData: ArrayList<ClientParamPreOrder> = ArrayList()
+                if (constraint.toString().isEmpty()) filteredData.addAll(userList)
+                else {
+
+                    for (obj in userList) {
+
+                        if (obj.stateNumber.lowercase(Locale.getDefault())
+                                .contains(constraint.toString().lowercase(Locale.getDefault()))
+                        ) {
+
+                            filteredData.add(obj)
+
+                        }
+
+                    }
+                    results.values = filteredData
+                    results.count = filteredData.size
+                }
+                return results
+            }
+
+            override fun publishResults(constraint: CharSequence, results: FilterResults) {
+                try {
+                    userList = results.values as ArrayList<ClientParamPreOrder>
+                    notifyDataSetChanged()
+                } catch (e: NullPointerException) {
+                    userList.clear()
+                    eventChangeListener()
+                }
+
+            }
+        }
+    }
+
+    private fun eventChangeListener() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("preOrder")
+            .addSnapshotListener { value, _ ->
+                for (dc: DocumentChange in value?.documentChanges!!) {
+
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        Log.d("Firestore preOrder", dc.document.id)
+                        userList.add(dc.document.toObject(ClientParamPreOrder::class.java))
+                    }
+                }
+                notifyDataSetChanged()
+            }
     }
 }
