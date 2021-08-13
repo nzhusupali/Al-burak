@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditCompleteItem">
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/employee_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/employee_edit_complete"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginTop="62dp"
+        android:drawableStart="@drawable/ic_engineering"
+        android:hint="@string/employee_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="@string/employee_name" />
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="116dp"
+        android:text="@string/CarBrand"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/carName_edit_complete"
+        style="@style/ET_Complete_AddCar"
+        android:autofillHints="@string/CarBrand"
+        android:drawableStart="@drawable/ic_car"
+        android:hint="@string/CarBrand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/employee_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/employee_edit_complete" />
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="192dp"
+        android:text="@string/client_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/clientName_edit_complete"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_person"
+        android:hint="@string/client_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/carName_edit_complete"
+        app:layout_constraintStart_toStartOf="@+id/carName_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/carName_edit_complete" />
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="264dp"
+        android:text="@string/phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/number_edit_complete"
+        style="@style/ET_PreOrder_AddCar"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_phone"
+        android:hint="@string/phone_number"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/clientName_edit_complete"
+        app:layout_constraintStart_toStartOf="@+id/clientName_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/clientName_edit_complete" />
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="340dp"
+        android:text="@string/StateNumberCar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/stateNumber_edit_complete"
+        style="@style/ET_Complete_AddCar"
+        android:autofillHints="@string/StateNumberCar"
+        android:drawableStart="@drawable/ic_country"
+        android:hint="@string/StateNumberCar"
+        app:layout_constraintEnd_toEndOf="@+id/number_edit_complete"
+        app:layout_constraintStart_toStartOf="@+id/number_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/number_edit_complete"
+        tools:ignore="TextFields" />
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="412dp"
+        android:text="@string/FinalSum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/sum_edit_complete"
+        style="@style/ET_Complete_AddCar"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_cash"
+        android:ems="10"
+        android:hint="@string/FinalSum"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/stateNumber_edit_complete"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/stateNumber_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/stateNumber_edit_complete"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="488dp"
+        android:text="@string/datePicker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateBtn_edit_complete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        android:drawablePadding="20dp"
+        android:hint="@string/choiceDataPreOrder"
+        android:paddingStart="10dp"
+        app:drawableStartCompat="@drawable/ic_date"
+        app:layout_constraintEnd_toEndOf="@+id/sum_edit_complete"
+        app:layout_constraintStart_toStartOf="@+id/sum_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/sum_edit_complete" />
+
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="536dp"
+        android:text="@string/Notes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/workType_edit_complete"
+        style="@style/ET_Complete_AddCar"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_task_build"
+        android:hint="@string/Notes"
+        app:layout_constraintEnd_toEndOf="@+id/dateBtn_edit_complete"
+        app:layout_constraintStart_toStartOf="@+id/dateBtn_edit_complete"
+        app:layout_constraintTop_toBottomOf="@+id/dateBtn_edit_complete" />
+
+    <Button
+        android:id="@+id/save_edit_complete"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/save"
+        android:textColor="@color/ButtonTextColor"
+        app:backgroundTint="@color/ButtonColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workType_edit_complete" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

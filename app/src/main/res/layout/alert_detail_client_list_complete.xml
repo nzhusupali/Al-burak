@@ -100,7 +100,6 @@
     <TextView
         android:id="@+id/carName_cng"
         style="@style/changeText_detailClient"
-        android:layout_marginTop="20dp"
         android:text="Mercedes-benz"
         app:layout_constraintEnd_toEndOf="@+id/employee_cng"
         app:layout_constraintHorizontal_bias="1.0"
@@ -110,7 +109,6 @@
     <TextView
         android:id="@+id/stateNumber_cng"
         style="@style/changeText_detailClient"
-        android:layout_marginTop="20dp"
         android:text="KZ063AMG01"
         app:layout_constraintEnd_toEndOf="@+id/carName_cng"
         app:layout_constraintHorizontal_bias="1.0"
@@ -120,7 +118,6 @@
     <TextView
         android:id="@+id/sum_cng"
         style="@style/changeText_detailClient"
-        android:layout_marginTop="20dp"
         android:text="100,000"
         app:layout_constraintEnd_toEndOf="@+id/stateNumber_cng"
         app:layout_constraintHorizontal_bias="1.0"
@@ -130,7 +127,6 @@
     <TextView
         android:id="@+id/phoneNumber_cng"
         style="@style/changeText_detailClient"
-        android:layout_marginTop="20dp"
         android:text="89798516545"
         app:layout_constraintEnd_toEndOf="@+id/sum_cng"
         app:layout_constraintHorizontal_bias="1.0"
@@ -140,7 +136,6 @@
     <TextView
         android:id="@+id/clientName_cng"
         style="@style/changeText_detailClient"
-        android:layout_marginTop="20dp"
         android:text="Shevtsov"
         app:layout_constraintEnd_toEndOf="@+id/phoneNumber_cng"
         app:layout_constraintHorizontal_bias="1.0"

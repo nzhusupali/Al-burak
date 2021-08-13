@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="30dp"
+    tools:context=".ActivityLogin">
+
+    <EditText
+        android:id="@+id/ET_login"
+        style="@style/ET_PreOrder_AddCar"
+        android:layout_marginTop="205dp"
+        android:hint="@string/login"
+        android:inputType="textEmailAddress"
+        android:textStyle="bold"
+        android:background="@color/backColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="@string/logIn" />
+
+    <EditText
+        android:id="@+id/ET_password"
+        style="@style/ET_PreOrder_AddCar"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:background="@color/backColor"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ET_login"
+        app:layout_constraintStart_toStartOf="@+id/ET_login"
+        app:layout_constraintTop_toBottomOf="@+id/ET_login"
+        android:autofillHints="@string/password" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/ButtonColor"
+        android:text="@string/logIn"
+        android:textColor="@color/ButtonTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/ET_password"
+        app:layout_constraintTop_toBottomOf="@+id/ET_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,13 @@
     <string name="close">Закрыть</string>
     <string name="findStateNumber">Поиск по гос.номеру</string>
     <string name="page_updated">Страница обновлена</string>
+    <string name="edit">Изменить</string>
+    <string name="save">Сохранить</string>
+
+    // EditItem - PreOrder, Complete
+    <string name="successfullySaved">Машина успешно сохранена</string>
+    <string name="repeatSave">Попробуйте сохранить машину заново или проверьте подключение с интернетом</string>
+
 
     // Add
     <string name="successAdd">Машина успешно добавлена</string>
@@ -30,24 +37,32 @@
     <string name="phone_number">Номер телефона</string>
     <string name="client_name">Имя клиента</string>
     <string name="choiceDataPreOrder">Выбрать дату</string>
+    <string name="addPreOrder">Добавить предзаказ</string>
+
+
+    //EndPreOrder
+    <string name="endPreOrder">Завершить предзаказ</string>
+    <string name="congratulationsNurislam">Поздравляю с новым клиентом, Нурислам ожидает немного шекелей</string>
+
 
     //Kotlin
-        <string name="enter_your_name">Введите своё имя</string>
-        <string name="enter_car_name">Введите марку машины</string>
-        <string name="enter_state_number">Введите государственный номер машины</string>
-        <string name="enterPayment">Введите оплату за работу</string>
-        <string name="enterClientPhoneNumber">Введите номер телефона клиента</string>
-        <string name="enterClientName">Введите имя клиента</string>
-        <string name="enterWorkList">Введите список работы</string>
-        <string name="wannaDel">Вы действейтельно хотите удалить машину ?</string>
-        <string name="deletePreOrder">Удалить предзаказ</string>
-        <string name="informationPreOrder">Информация о предзаказе</string>
+    <string name="enter_your_name">Введите своё имя</string>
+    <string name="enter_car_name">Введите марку машины</string>
+    <string name="enter_state_number">Введите государственный номер машины</string>
+    <string name="enterPayment">Введите оплату за работу</string>
+    <string name="enterClientPhoneNumber">Введите номер телефона клиента</string>
+    <string name="enterClientName">Введите имя клиента</string>
+    <string name="enterWorkList">Введите список работы</string>
+    <string name="wannaDel">Вы действейтельно хотите удалить машину ?</string>
+    <string name="deletePreOrder">Удалить</string>
+    <string name="informationPreOrder">Информация о предзаказе</string>
 
     // Completed Work
     <string name="employee_name">Имя работника</string>
     //Kotlin
-        <string name="delete">Удалить машину</string>
-        <string name="informationCompleted">Информация о выполненной машине</string>
+    <string name="delete">Удалить</string>
+    <string name="addComplete">Добавить заказ</string>
+    <string name="informationCompleted">Информация о выполненной машине</string>
 
 
     // Detail_client_list - activity
@@ -65,7 +80,17 @@
     <string name="detail_simple">Подробнее</string>
     <string name="sum_simple">100 000</string>
     <string name="datePicker">Дата брони</string>
-    <string name="msg_token_fmt">FCM registration Token: %s</string>
+    <string name="end">Завершить</string>
+
+
+    // Login
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="logIn">Войти</string>
+    <string name="enterLogin">Введите логин</string>
+    <string name="enterPassword">Введите пароль</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="editOrder">Изменить заказ</string>
 
     <string-array name="carBrands">
         <item>Mercedes-Benz</item>
@@ -118,5 +143,9 @@
         <item>Cadillac</item>
         <item>Citroen</item>
         <item>Citroen</item>
+        <item>Lamborghini</item>
+        <item>Porsche</item>
+        <item>Ferrari</item>
+
     </string-array>
 </resources>

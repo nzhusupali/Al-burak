@@ -3,22 +3,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/preOrder">
+    app:startDestination="@id/addCar">
 
     <fragment
         android:id="@+id/preOrder"
         android:name="nzhusupali.project.al_burak.fragments.preOrder.PreOrder"
         android:label="@string/preOrder"
-        tools:layout="@layout/fragment_pre_order" />
+        tools:layout="@layout/fragment_pre_order" >
+        <action
+            android:id="@+id/action_preOrder_to_editPreOrderItem"
+            app:destination="@id/editPreOrderItem" />
+    </fragment>
 
     <fragment
         android:id="@+id/addCar"
         android:name="nzhusupali.project.al_burak.fragments.add.AddCar"
         android:label="@string/addCar"
-        tools:layout="@layout/fragment_add_car" />
+        tools:layout="@layout/fragment_add_car" >
+        <action
+            android:id="@+id/action_addCar_to_completeAddCar"
+            app:destination="@id/completeAddCar" />
+        <action
+            android:id="@+id/action_addCar_to_preOrderAddCar"
+            app:destination="@id/preOrderAddCar" />
+    </fragment>
     <fragment
         android:id="@+id/completedWork"
         android:name="nzhusupali.project.al_burak.fragments.completed.CompletedWork"
         android:label="@string/completedWork"
-        tools:layout="@layout/fragment_completed_work" />
+        tools:layout="@layout/fragment_completed_work" >
+        <action
+            android:id="@+id/action_completedWork_to_editCompleteItem"
+            app:destination="@id/editCompleteItem" />
+    </fragment>
+    <activity
+        android:id="@+id/completeAddCar"
+        android:name="nzhusupali.project.al_burak.CompleteAddCar"
+        android:label="activity_complete_add_car"
+        tools:layout="@layout/activity_complete_add_car" />
+    <activity
+        android:id="@+id/preOrderAddCar"
+        android:name="nzhusupali.project.al_burak.PreOrderAddCar"
+        android:label="activity_pre_order_add_car"
+        tools:layout="@layout/activity_pre_order_add_car" />
+    <activity
+        android:id="@+id/editCompleteItem"
+        android:name="nzhusupali.project.al_burak.EditCompleteItem"
+        android:label="activity_edit_complete_item"
+        tools:layout="@layout/activity_edit_complete_item" />
+    <activity
+        android:id="@+id/editPreOrderItem"
+        android:name="nzhusupali.project.al_burak.EditPreOrderItem"
+        android:label="activity_edit_item_pre_order"
+        tools:layout="@layout/activity_edit_item_pre_order" />
+    <activity
+        android:id="@+id/activityEndPreOrder"
+        android:name="nzhusupali.project.al_burak.ActivityEndPreOrder"
+        android:label="activity_end_pre_order"
+        tools:layout="@layout/activity_end_pre_order" />
+    <activity
+        android:id="@+id/activityLogin"
+        android:name="nzhusupali.project.al_burak.ActivityLogin"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="nzhusupali.project.al_burak.MainActivity"
+        android:label="fragment_add_car"
+        tools:layout="@layout/fragment_add_car" />
 </navigation>

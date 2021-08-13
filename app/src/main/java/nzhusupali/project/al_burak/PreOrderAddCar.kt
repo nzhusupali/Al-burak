@@ -24,7 +24,9 @@ class PreOrderAddCar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityPreOrderAddCarBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-       autoCompleteCarBrand()
+        autoCompleteCarBrand()
+        title = getString(R.string.addPreOrder)
+
 
         _binding.addClientPreOrder.setOnClickListener {
             val carName = _binding.carNamePreOrder.text.toString()
@@ -97,12 +99,7 @@ class PreOrderAddCar : AppCompatActivity() {
         db.collection("preOrder")
             .add(addClient)
             .addOnSuccessListener {
-                Toast.makeText(
-                    applicationContext,
-                    getString(R.string.successAdd),
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                Toast.makeText(applicationContext, getString(R.string.successAdd), Toast.LENGTH_SHORT).show()
                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(Intent(this, MainActivity::class.java))
             }

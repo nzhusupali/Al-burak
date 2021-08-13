@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nzhusupali.project.al_burak">
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alburak">
-
-
+        <activity android:name=".ActivityEndPreOrder"/>
+        <activity android:name=".ActivityLogin" />
+        <activity android:name=".EditCompleteItem" />
+        <activity android:name=".EditPreOrderItem" />
         <activity android:name=".PreOrderAddCar" />
         <activity android:name=".CompleteAddCar" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

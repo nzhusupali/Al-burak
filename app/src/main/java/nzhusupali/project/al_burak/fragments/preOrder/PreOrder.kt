@@ -1,6 +1,5 @@
 package nzhusupali.project.al_burak.fragments.preOrder
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,7 +32,6 @@ class PreOrder : Fragment() {
         _binding = FragmentPreOrderBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         recyclerView = _binding!!.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
@@ -45,6 +43,7 @@ class PreOrder : Fragment() {
 
         eventChangeListener()
 
+        // search View
         binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 clientAdapter.filter.filter(query)
@@ -57,9 +56,11 @@ class PreOrder : Fragment() {
             }
         })
 
+        // Refresh animation
         binding.swipeToRefresh.setOnRefreshListener {
             Toast.makeText(context, getString(R.string.page_updated), Toast.LENGTH_SHORT).show()
             binding.swipeToRefresh.isRefreshing = false
+            clientAdapter.notifyDataSetChanged()
         }
 
 

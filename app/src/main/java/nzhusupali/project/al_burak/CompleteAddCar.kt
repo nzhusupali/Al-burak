@@ -22,6 +22,9 @@ class CompleteAddCar : AppCompatActivity() {
         _binding = ActivityCompleteAddCarBinding.inflate(layoutInflater)
         setContentView(_binding.root)
         autoCompleteCarBrand()
+
+        title = getString(R.string.addComplete)
+
         _binding.addClientComplete.setOnClickListener {
             val employee = _binding.employeeComplete.text.toString()
             val carName = _binding.carNameComplete.text.toString()
@@ -107,17 +110,7 @@ class CompleteAddCar : AppCompatActivity() {
 
     ) {
         val db = FirebaseFirestore.getInstance()
-        val addClient = ClientParamComplete(
-            employee,
-            carName,
-            stateNumber,
-            sum,
-            phoneNumberClient,
-            clientName,
-            date,
-            workType
-        )
-
+        val addClient = ClientParamComplete(carName, clientName, phoneNumberClient, stateNumber, sum, workType, date, employee)
         if (employee.isEmpty()) {
             _binding.employeeComplete.error = getString(R.string.enter_your_name)
             _binding.employeeComplete.requestFocus()
@@ -162,8 +155,8 @@ class CompleteAddCar : AppCompatActivity() {
                     getString(R.string.successAdd),
                     Toast.LENGTH_SHORT
                 ).show()
-                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(Intent(this, MainActivity::class.java))
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
             .addOnFailureListener {
                 Toast.makeText(this, getString(R.string.repeatAdd), Toast.LENGTH_SHORT).show()

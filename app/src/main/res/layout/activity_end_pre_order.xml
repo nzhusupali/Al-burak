@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityEndPreOrder">
+
+    <TextView
+        style="@style/TitleText_detailClient"
+        android:layout_marginTop="60dp"
+        android:text="@string/endPreOrder"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ET_employee_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:layout_marginTop="103dp"
+        android:drawableStart="@drawable/ic_engineering"
+        android:hint="@string/employee_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/ET_carName_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:autofillHints="@string/CarBrand"
+        android:drawableStart="@drawable/ic_car"
+        android:hint="@string/CarBrand"
+        app:layout_constraintEnd_toEndOf="@+id/ET_employee_end_preOrder"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ET_employee_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_employee_end_preOrder" />
+
+    <EditText
+        android:id="@+id/ET_clientName_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_person"
+        android:hint="@string/client_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ET_carName_end_preOrder"
+        app:layout_constraintStart_toStartOf="@+id/ET_carName_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_carName_end_preOrder" />
+
+    <EditText
+        android:id="@+id/ET_number_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_phone"
+        android:hint="@string/phone_number"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/ET_clientName_end_preOrder"
+        app:layout_constraintStart_toStartOf="@+id/ET_clientName_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_clientName_end_preOrder" />
+
+    <EditText
+        android:id="@+id/ET_stateNumber_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:autofillHints="@string/StateNumberCar"
+        android:drawableStart="@drawable/ic_country"
+        android:hint="@string/StateNumberCar"
+        app:layout_constraintEnd_toEndOf="@+id/ET_number_end_preOrder"
+        app:layout_constraintStart_toStartOf="@+id/ET_number_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_number_end_preOrder"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/ET_sum_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:autofillHints="@string/FinalSum"
+        android:drawableStart="@drawable/ic_cash"
+        android:ems="10"
+        android:hint="@string/FinalSum"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/ET_stateNumber_end_preOrder"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ET_stateNumber_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_stateNumber_end_preOrder"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ET_date_end_preOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        android:drawablePadding="20dp"
+        android:hint="@string/choiceDataPreOrder"
+        android:paddingStart="10dp"
+        app:drawableStartCompat="@drawable/ic_date"
+        app:layout_constraintEnd_toEndOf="@+id/ET_sum_end_preOrder"
+        app:layout_constraintStart_toStartOf="@+id/ET_sum_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_sum_end_preOrder" />
+
+
+    <EditText
+        android:id="@+id/ET_workType_end_preOrder"
+        style="@style/ET_end_preOrder"
+        android:autofillHints="@string/Notes"
+        android:drawableStart="@drawable/ic_task_build"
+        android:hint="@string/Notes"
+        app:layout_constraintEnd_toEndOf="@+id/ET_date_end_preOrder"
+        app:layout_constraintStart_toStartOf="@+id/ET_date_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_date_end_preOrder" />
+
+    <Button
+        android:id="@+id/btn_send_end_preOrder"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/end"
+        android:textColor="@color/ButtonTextColor"
+        app:backgroundTint="@color/ButtonColor"
+        app:layout_constraintEnd_toEndOf="@+id/ET_workType_end_preOrder"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/ET_workType_end_preOrder"
+        app:layout_constraintTop_toBottomOf="@+id/ET_workType_end_preOrder" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
