@@ -42,6 +42,7 @@
 
     //EndPreOrder
     <string name="endPreOrder">Завершить предзаказ</string>
+    <string name="waitTaskAddCar">Машина добавляется. Программа откроет главный экран по завершению своей работы.</string>
     <string name="congratulationsNurislam">Поздравляю с новым клиентом, Нурислам ожидает немного шекелей</string>
 
 

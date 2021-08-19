@@ -1,10 +1,10 @@
 package nzhusupali.project.al_burak
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import nzhusupali.project.al_burak.databinding.ActivityEndPreOrderBinding
 import nzhusupali.project.al_burak.fragments.completed.adapters.ClientParamComplete
@@ -81,10 +81,11 @@ class ActivityEndPreOrder : AppCompatActivity() {
 
         val addClient = ClientParamComplete(eCarName, eClientName, ePhoneNumberClient, eStateNumber, eSum, eWorkType, eDate, eEmployee)
 
-
         db.collection(dbName1)
             .add(addClient)
             .addOnSuccessListener {
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 db.collection(dbName)
                     .whereEqualTo("carName", whereCarName)
                     .whereEqualTo("clientName", whereClientName)
@@ -106,8 +107,7 @@ class ActivityEndPreOrder : AppCompatActivity() {
                                 .delete()
                                 .addOnSuccessListener {
                                     Toast.makeText(applicationContext, getString(R.string.congratulationsNurislam), Toast.LENGTH_LONG).show()
-                                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                                 }
                                 .addOnFailureListener {
                                     Toast.makeText(applicationContext, getString(R.string.repeatAdd), Toast.LENGTH_LONG).show()

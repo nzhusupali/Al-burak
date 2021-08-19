@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backColor"
     android:padding="15dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <TextView
         style="@style/TitleText_detailClient"
@@ -102,7 +106,7 @@
         android:id="@+id/btn_close_alert_item_preOrder"
         style="@style/btn_alert_edit_item"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:text="@string/close"
         app:backgroundTint="@color/ButtonColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +117,7 @@
     <Button
         android:id="@+id/btn_end_alert_item_preOrder"
         style="@style/btn_alert_edit_item"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="0dp"
         android:text="@string/end"
         app:backgroundTint="@color/ButtonColor"
         app:layout_constraintEnd_toEndOf="@+id/btn_close_alert_item_preOrder"
@@ -123,7 +127,7 @@
     <Button
         android:id="@+id/btn_change_alert_item_preOrder"
         style="@style/btn_alert_edit_item"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:text="@string/edit"
         app:backgroundTint="@color/ButtonColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +138,7 @@
     <Button
         android:id="@+id/btn_delete_alert_item_preOrder"
         style="@style/btn_alert_edit_item"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="0dp"
         android:text="@string/delete"
         app:backgroundTint="@color/ButtonColor"
         app:layout_constraintEnd_toEndOf="@+id/btn_change_alert_item_preOrder"
@@ -142,5 +146,6 @@
         app:layout_constraintStart_toStartOf="@+id/btn_change_alert_item_preOrder"
         app:layout_constraintTop_toBottomOf="@+id/btn_change_alert_item_preOrder" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
