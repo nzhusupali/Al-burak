@@ -1,4 +1,4 @@
-![VERSION](https://img.shields.io/badge/5-v1.1.2-red)
+![VERSION](https://img.shields.io/badge/Build%20version-v1.2.2-red)
 
 ![mainActivity](https://user-images.githubusercontent.com/35918435/130084347-22462322-db63-4a00-b9d7-38a64ca696c4.png)
 ![preOrder](https://user-images.githubusercontent.com/35918435/130084208-e123b801-673f-4770-9f04-28d6aafefc9f.png)
