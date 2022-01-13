@@ -4,15 +4,15 @@
 
 
     <gradient
-        android:startColor="@color/white"
-        android:endColor="@color/white"
+        android:startColor="@color/constraint_color"
+        android:endColor="@color/constraint_color"
         android:angle="45"/>
 
     <corners
         android:radius="10dp" />
 
     <stroke
-        android:color="@color/white"
+        android:color="@color/constraint_color"
         android:width="5dp"/>
 
 

@@ -1,4 +1,25 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="marginStartEnd">1dp</dimen>
+    <dimen name="item_margin_top">40dp</dimen>
+
+
+
+    <dimen name="title_text_size">35sp</dimen>
+    <dimen name="middle_text_size">20sp</dimen>
+    <dimen name="text_view_size">15sp</dimen>
+
+    <dimen name="standard_padding">10dp</dimen>
+    <dimen name="editText_height">50sp</dimen>
+    <dimen name="standard_margin">10dp</dimen>
+
+    <dimen name="btn_call_repond_size">170dp</dimen>
+
+    <dimen name="main_fragment_constraint_image_width_size">180dp</dimen>
+    <dimen name="main_fragment_constraint_image_height_size">130dp</dimen>
+    <dimen name="long_margin_top">60sp</dimen>
+    <dimen name="elevation_size">8dp</dimen>
+
+    <dimen name="icon_size_width">100dp</dimen>
+    <dimen name="icon_size_height">60dp</dimen>
 </resources>

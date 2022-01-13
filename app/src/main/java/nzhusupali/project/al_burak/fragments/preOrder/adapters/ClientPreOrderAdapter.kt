@@ -1,8 +1,6 @@
 package nzhusupali.project.al_burak.fragments.preOrder.adapters
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -16,8 +14,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import nzhusupali.project.al_burak.ActivityEndPreOrder
-import nzhusupali.project.al_burak.EditPreOrderItem
+import nzhusupali.project.al_burak.activity.ActivityEndPreOrder
+import nzhusupali.project.al_burak.activity.EditPreOrderItem
 import nzhusupali.project.al_burak.MainActivity
 import nzhusupali.project.al_burak.R
 import java.util.*

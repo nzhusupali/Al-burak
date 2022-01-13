@@ -1,8 +1,6 @@
 package nzhusupali.project.al_burak.fragments.completed.adapters
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -10,14 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import nzhusupali.project.al_burak.EditCompleteItem
+import nzhusupali.project.al_burak.activity.EditCompleteItem
 import nzhusupali.project.al_burak.MainActivity
 import nzhusupali.project.al_burak.R
 import java.util.*

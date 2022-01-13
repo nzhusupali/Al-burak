@@ -12,8 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import nzhusupali.project.al_burak.activity.ActivityLogin
 import nzhusupali.project.al_burak.databinding.ActivityMainBinding
 
 
@@ -25,11 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        supportActionBar!!.hide()
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
@@ -40,21 +39,18 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.pop_up_menu, menu)
-        val login = menu!!.findItem(R.id.login)
-        val logout = menu.findItem(R.id.logout)
-
 
         return super.onCreateOptionsMenu(menu)
     }
-    private val globalMenuItem: Menu? = null
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.login -> startActivity(Intent(this,ActivityLogin::class.java))
+            R.id.login -> startActivity(Intent(this, ActivityLogin::class.java))
             R.id.logout -> signOut()
         }
         return super.onOptionsItemSelected(item)
@@ -64,4 +60,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signOut()
         Toast.makeText(applicationContext, "Log out", Toast.LENGTH_SHORT).show()
     }
+
+
+
 }

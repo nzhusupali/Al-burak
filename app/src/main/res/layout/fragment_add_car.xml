@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backColor"
     android:padding="30dp"
     tools:context=".MainActivity">
 
@@ -11,15 +12,11 @@
         android:id="@+id/carAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStartEnd"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="@dimen/marginStartEnd"
-        android:layout_marginBottom="260dp"
         android:backgroundTint="@color/ButtonColor"
         android:text="@string/addToPreOrder"
         android:textColor="@color/ButtonTextColor"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="250dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,17 +24,11 @@
         android:id="@+id/clientAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStartEnd"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="@dimen/marginStartEnd"
-        android:layout_marginBottom="181dp"
         android:backgroundTint="@color/ButtonColor1"
         android:text="@string/addToCompletedWork"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/carAdd"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

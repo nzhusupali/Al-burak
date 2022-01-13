@@ -11,7 +11,16 @@
     <color name="grey">#999999</color>
     <color name="ButtonColor">@color/purple_200</color>
     <color name="ButtonColor1">@color/purple_200</color>
+    <color name="call_btn_color">#28D182</color>
+    <color name="call_btn_text_color">@color/white</color>
     <color name="ButtonTextColor">@color/white</color>
     <color name="IconColor">#D2691f</color>
-    <color name="backColor">#F4F4F4</color>
+
+    // Black/White colors
+    <color name="constraint_color">@color/white</color>
+    <color name="textColor">@color/black</color>
+    <color name="backColor">#F6F6F6</color>
+    <color name="ediTextBackground">#EAE9E9</color>
+
+
 </resources>

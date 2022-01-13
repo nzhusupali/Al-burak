@@ -32,6 +32,34 @@ class PreOrder : Fragment() {
         _binding = FragmentPreOrderBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        recyclerToList()
+        with(binding) {
+            // search View
+            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    clientAdapter.filter.filter(query)
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    clientAdapter.filter.filter(newText)
+                    return true
+                }
+            })
+
+            // Refresh animation
+            swipeToRefresh.setOnRefreshListener {
+                Toast.makeText(context, getString(R.string.page_updated), Toast.LENGTH_SHORT).show()
+                swipeToRefresh.isRefreshing = false
+                clientAdapter.notifyDataSetChanged()
+            }
+        }
+
+
+        return root
+    }
+
+    private fun recyclerToList() {
         recyclerView = _binding!!.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
@@ -43,30 +71,7 @@ class PreOrder : Fragment() {
 
         eventChangeListener()
 
-        // search View
-        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                clientAdapter.filter.filter(query)
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                clientAdapter.filter.filter(newText)
-                return true
-            }
-        })
-
-        // Refresh animation
-        binding.swipeToRefresh.setOnRefreshListener {
-            Toast.makeText(context, getString(R.string.page_updated), Toast.LENGTH_SHORT).show()
-            binding.swipeToRefresh.isRefreshing = false
-            clientAdapter.notifyDataSetChanged()
-        }
-
-
-        return root
     }
-
 
 
     // Читаем данные с Firestore
@@ -76,11 +81,7 @@ class PreOrder : Fragment() {
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     if (error != null) {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.error_server),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(context, getString(R.string.error_server), Toast.LENGTH_SHORT).show()
                         Log.e("Firestore error", error.message.toString())
                         return
                     }

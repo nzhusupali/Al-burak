@@ -1,4 +1,4 @@
-package nzhusupali.project.al_burak
+package nzhusupali.project.al_burak.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import nzhusupali.project.al_burak.MainActivity
+import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.ActivityEndPreOrderBinding
 import nzhusupali.project.al_burak.fragments.completed.adapters.ClientParamComplete
 

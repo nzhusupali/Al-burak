@@ -1,4 +1,4 @@
-package nzhusupali.project.al_burak
+package nzhusupali.project.al_burak.activity
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import nzhusupali.project.al_burak.MainActivity
+import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.ActivityCompleteAddCarBinding
 import nzhusupali.project.al_burak.fragments.completed.adapters.ClientParamComplete
 import java.text.SimpleDateFormat

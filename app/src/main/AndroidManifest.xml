@@ -10,12 +10,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alburak">
-        <activity android:name=".ActivityEndPreOrder"/>
-        <activity android:name=".ActivityLogin" />
-        <activity android:name=".EditCompleteItem" />
-        <activity android:name=".EditPreOrderItem" />
-        <activity android:name=".PreOrderAddCar" />
-        <activity android:name=".CompleteAddCar" />
+        <activity android:name=".activity.ActivityEndPreOrder"/>
+        <activity android:name=".activity.ActivityLogin" />
+        <activity android:name=".activity.EditCompleteItem" />
+        <activity android:name=".activity.EditPreOrderItem" />
+        <activity android:name=".activity.PreOrderAddCar" />
+        <activity android:name=".activity.CompleteAddCar" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">

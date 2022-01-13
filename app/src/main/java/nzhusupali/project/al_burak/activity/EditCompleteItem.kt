@@ -1,4 +1,4 @@
-package nzhusupali.project.al_burak
+package nzhusupali.project.al_burak.activity
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -10,50 +10,63 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
-import nzhusupali.project.al_burak.R.id.carName_edit_preOrder
-import nzhusupali.project.al_burak.databinding.ActivityEditItemPreOrderBinding
+import nzhusupali.project.al_burak.MainActivity
+import nzhusupali.project.al_burak.R
+import nzhusupali.project.al_burak.databinding.ActivityEditCompleteItemBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
+class EditCompleteItem : AppCompatActivity() {
 
-class EditPreOrderItem : AppCompatActivity() {
-    private lateinit var binding: ActivityEditItemPreOrderBinding
-    private var dbName = "preOrder"
-    private var logFirestore = "Firestore save preOrder"
+    private lateinit var binding: ActivityEditCompleteItemBinding
+    private var dbName = "completedWork"
+    private var logFirestore = "Firestore save complete"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditItemPreOrderBinding.inflate(layoutInflater)
+        binding = ActivityEditCompleteItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
         autoCompleteCarBrand()
         title = getString(R.string.editOrder)
 
+        val employee: TextView = findViewById(R.id.employee_edit_complete)
+        val carName: TextView = findViewById(R.id.carName_edit_complete)
+        val stateNumber: TextView = findViewById(R.id.stateNumber_edit_complete)
+        val sum: TextView = findViewById(R.id.sum_edit_complete)
+        val phoneNumberClient: TextView = findViewById(R.id.number_edit_complete)
+        val clientName: TextView = findViewById(R.id.clientName_edit_complete)
+        val date: TextView = findViewById(R.id.dateBtn_edit_complete)
+        val workType: TextView = findViewById(R.id.workType_edit_complete)
 
-        val carName: TextView = findViewById(carName_edit_preOrder)
-        val stateNumber: TextView = findViewById(R.id.stateNumber_edit_preOrder)
-        val sum: TextView = findViewById(R.id.sum_edit_preOrder)
-        val phoneNumberClient: TextView = findViewById(R.id.number_edit_preOrder)
-        val clientName: TextView = findViewById(R.id.clientName_edit_preOrder)
-        val date: TextView = findViewById(R.id.dateBtn_edit_preOrder)
-        val workType: TextView = findViewById(R.id.workType_edit_preOrder)
+        employee.text = intent.extras!!.getString("employee_edit_completed").toString().trim()
+        carName.text = intent.extras!!.getString("carName_edit_completed").toString().trim()
+        stateNumber.text = intent.extras!!.getString("stateNumber_edit_completed").toString().trim()
+        sum.text = intent.extras!!.getString("sum_edit_completed").toString().trim()
+        phoneNumberClient.text = intent.extras!!.getString("phoneNumber_edit_completed").toString().trim()
+        clientName.text = intent.extras!!.getString("clientName_edit_completed").toString().trim()
+        date.text = intent.extras!!.getString("date_edit_completed").toString().trim()
+        workType.text = intent.extras!!.getString("workType_edit_completed").toString().trim()
 
-        carName.text = intent.extras!!.getString("carName_edit_preOrder").toString().trim()
-        clientName.text = intent.extras!!.getString("clientName_edit_preOrder").toString().trim()
-        phoneNumberClient.text = intent.extras!!.getString("phoneNumberClient_edit_preOrder").toString().trim()
-        stateNumber.text = intent.extras!!.getString("stateNumber_edit_preOrder").toString().trim()
-        sum.text = intent.extras!!.getString("sum_edit_preOrder").toString().trim()
-        date.text = intent.extras!!.getString("date_edit_preOrder").toString().trim()
-        workType.text = intent.extras!!.getString("workType_edit_preOrder").toString().trim()
-
-        binding.saveEditPreOrder.setOnClickListener {
-            saveEdit(carName, clientName, phoneNumberClient, stateNumber, sum, date, workType)
+        binding.saveEditComplete.setOnClickListener {
+            saveEdit(
+                employee,
+                carName,
+                clientName,
+                phoneNumberClient,
+                stateNumber,
+                sum,
+                date,
+                workType
+            )
         }
-        binding.dateBtnEditPreOrder.setOnClickListener { showDateTimeDialog() }
+        binding.dateBtnEditComplete.setOnClickListener { showDateTimeDialog() }
+
 
     }
 
-
     private fun saveEdit(
+        employee: TextView,
         carName: TextView,
         clientName: TextView,
         phoneNumberClient: TextView,
@@ -65,6 +78,7 @@ class EditPreOrderItem : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
 
         // Текст для замены в Firestore
+        val eEmployee = employee.text.toString().trim()
         val eCarName = carName.text.toString().trim()
         val eClientName = clientName.text.toString().trim()
         val ePhoneNumberClient = phoneNumberClient.text.toString().trim()
@@ -73,15 +87,18 @@ class EditPreOrderItem : AppCompatActivity() {
         val eWorkType = workType.text.toString().trim()
         val eDate = date.text.toString().trim()
 
-        // Предыдущий текст для  Firestore
-        val whereCarName = intent.extras!!.getString("carName_edit_preOrder").toString().trim()
-        val whereClientName = intent.extras!!.getString("clientName_edit_preOrder").toString().trim()
-        val wherePhoneNumberClient = intent.extras!!.getString("phoneNumberClient_edit_preOrder").toString().trim()
-        val whereStateNumber = intent.extras!!.getString("stateNumber_edit_preOrder").toString().trim()
-        val whereDate = intent.extras!!.getString("date_edit_preOrder").toString().trim()
-        val whereSum = intent.extras!!.getString("sum_edit_preOrder").toString().trim()
+        // Предыдущий текст для поиска в Firestore
+        val whereEmployee = intent.extras!!.getString("employee_edit_completed").toString().trim()
+        val whereCarName = intent.extras!!.getString("carName_edit_completed").toString().trim()
+        val whereClientName = intent.extras!!.getString("clientName_edit_completed").toString().trim()
+        val wherePhoneNumberClient =
+            intent.extras!!.getString("phoneNumber_edit_completed").toString().trim()
+        val whereStateNumber = intent.extras!!.getString("stateNumber_edit_completed").toString().trim()
+        val whereDate = intent.extras!!.getString("date_edit_completed").toString().trim()
+        val whereSum = intent.extras!!.getString("sum_edit_completed").toString().trim()
 
         db.collection(dbName)
+            .whereEqualTo("employee", whereEmployee)
             .whereEqualTo("carName", whereCarName)
             .whereEqualTo("clientName", whereClientName)
             .whereEqualTo("phoneNumberClient", wherePhoneNumberClient)
@@ -98,6 +115,7 @@ class EditPreOrderItem : AppCompatActivity() {
 
                     val dbUpdate = db.collection(dbName)
                         .document(documentId)
+                    dbUpdate.update("employee", eEmployee)
                     dbUpdate.update("carName", eCarName)
                     dbUpdate.update("clientName", eClientName)
                     dbUpdate.update("phoneNumberClient", ePhoneNumberClient)
@@ -125,7 +143,6 @@ class EditPreOrderItem : AppCompatActivity() {
                             Log.d(logFirestore, "$documentId not saved")
 
                         }
-
                 }
             }
             .addOnFailureListener {
@@ -149,12 +166,14 @@ class EditPreOrderItem : AppCompatActivity() {
 
                         val simpleDateFormat =
                             SimpleDateFormat("dd MMMM yyyy hh:mm", Locale.forLanguageTag("RU"))
-                        binding.dateBtnEditPreOrder.text = simpleDateFormat.format(calendar.time)
+                        binding.dateBtnEditComplete.text = simpleDateFormat.format(calendar.time)
 
                     }
                 TimePickerDialog(
                     this,
-                    timeSetListener, calendar[Calendar.HOUR_OF_DAY], calendar[Calendar.MINUTE],
+                    timeSetListener,
+                    calendar[Calendar.HOUR_OF_DAY],
+                    calendar[Calendar.MINUTE],
                     true
                 ).show()
             }
@@ -171,6 +190,7 @@ class EditPreOrderItem : AppCompatActivity() {
     private fun autoCompleteCarBrand() {
         val cars = resources.getStringArray(R.array.carBrands)
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cars)
-        binding.carNameEditPreOrder.setAdapter(arrayAdapter)
+        binding.carNameEditComplete.setAdapter(arrayAdapter)
+
     }
 }

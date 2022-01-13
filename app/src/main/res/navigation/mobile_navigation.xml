@@ -38,32 +38,32 @@
     </fragment>
     <activity
         android:id="@+id/completeAddCar"
-        android:name="nzhusupali.project.al_burak.CompleteAddCar"
+        android:name="nzhusupali.project.al_burak.activity.CompleteAddCar"
         android:label="activity_complete_add_car"
         tools:layout="@layout/activity_complete_add_car" />
     <activity
         android:id="@+id/preOrderAddCar"
-        android:name="nzhusupali.project.al_burak.PreOrderAddCar"
+        android:name="nzhusupali.project.al_burak.activity.PreOrderAddCar"
         android:label="activity_pre_order_add_car"
         tools:layout="@layout/activity_pre_order_add_car" />
     <activity
         android:id="@+id/editCompleteItem"
-        android:name="nzhusupali.project.al_burak.EditCompleteItem"
+        android:name="nzhusupali.project.al_burak.activity.EditCompleteItem"
         android:label="activity_edit_complete_item"
         tools:layout="@layout/activity_edit_complete_item" />
     <activity
         android:id="@+id/editPreOrderItem"
-        android:name="nzhusupali.project.al_burak.EditPreOrderItem"
+        android:name="nzhusupali.project.al_burak.activity.EditPreOrderItem"
         android:label="activity_edit_item_pre_order"
         tools:layout="@layout/activity_edit_item_pre_order" />
     <activity
         android:id="@+id/activityEndPreOrder"
-        android:name="nzhusupali.project.al_burak.ActivityEndPreOrder"
+        android:name="nzhusupali.project.al_burak.activity.ActivityEndPreOrder"
         android:label="activity_end_pre_order"
         tools:layout="@layout/activity_end_pre_order" />
     <activity
         android:id="@+id/activityLogin"
-        android:name="nzhusupali.project.al_burak.ActivityLogin"
+        android:name="nzhusupali.project.al_burak.activity.ActivityLogin"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <activity

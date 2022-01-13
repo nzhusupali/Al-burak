@@ -1,12 +1,13 @@
-package nzhusupali.project.al_burak
+package nzhusupali.project.al_burak.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View.GONE
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import nzhusupali.project.al_burak.MainActivity
+import nzhusupali.project.al_burak.R
 import nzhusupali.project.al_burak.databinding.ActivityLoginBinding
 
 class ActivityLogin : AppCompatActivity() {

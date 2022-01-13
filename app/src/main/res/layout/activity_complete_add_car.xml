@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:id="@+id/toolbarComplete"
     android:padding="10dp"
-    tools:context=".CompleteAddCar">
+    android:background="@color/backColor"
+    tools:context=".activity.CompleteAddCar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

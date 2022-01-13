@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:padding="10dp"
     android:layout_margin="10dp"
-    android:background="@color/white">
+    android:background="@drawable/item_background">
 
     <TextView
         android:id="@+id/carName_ClientListP"
         style="@style/sum_ClientList"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
         android:text="@string/CarBrand"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,8 +19,6 @@
     <TextView
         android:id="@+id/sum_ClientListP"
         style="@style/sum_ClientList"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="28dp"
         android:text="@string/sum_simple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,39 +26,37 @@
     <TextView
         android:id="@+id/stateNumber_ClientListP"
         style="@style/sum_ClientList"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="72dp"
         android:inputType="textCapWords"
         android:text="@string/stateNumber_simple"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextViewEdits" />
+        app:layout_constraintTop_toBottomOf="@+id/carName_ClientListP"/>
+    <TextView
+        android:id="@+id/textView_add_dateP"
+        style="@style/textView"
+        android:text="Дата добавления"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateNumber_ClientListP"/>
 
     <TextView
         android:id="@+id/date_clientListP"
         style="@style/sum_ClientList"
-        android:layout_marginStart="28dp"
         android:textStyle="normal"
         android:textSize="15dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginBottom="16dp"
         android:text="21.10.2001 09:00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="@dimen/standard_margin"
+        app:layout_constraintStart_toEndOf="@+id/textView_add_dateP"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/detail_ClientListP"
-        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginTop="74dp"
-        android:textColor="@color/ButtonTextColor"
-        android:layout_marginEnd="28dp"
-        android:width="114dp"
-        android:backgroundTint="@color/teal_200"
+        android:textColor="@color/call_btn_text_color"
+        android:layout_marginTop="@dimen/item_margin_top"
+        android:backgroundTint="@color/call_btn_color"
         android:text="@string/detail_simple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sum_ClientListP"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
